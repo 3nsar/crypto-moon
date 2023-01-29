@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <div className='navbar-container'>
       <h1>CRYPTO-MOON</h1>
-      <ul>
+      <ul className='navbar-list'>
         <li>Chat</li>
         <li>Market</li>
         <li>News</li>

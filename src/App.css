@@ -1,9 +1,39 @@
 *{
-  padding: ß;
+  padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
 body{
   background-color: #303030;
+  font-family: fantasy;
+  color: white;
+  font-size: 12px;
 }
+
+.navbar-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1480px;
+  padding: 1rem;
+  background-color: rgb(42, 41, 41);
+}
+
+.navbar-container ul{
+  list-style: none;
+  
+}
+
+.navbar-container li{
+  margin-left: 1rem;
+ 
+}
+
+.navbar-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
