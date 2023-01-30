@@ -39,8 +39,6 @@ body{
 /*=========== Coin-Container =====*/
 
 .coin-container{
-  display: flex;
-  align-items: center;
   font-size: 15px;
   font-weight: 600;
 }
