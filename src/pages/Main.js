@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
+import { useNavigate } from 'react-router'
 import { maxWidth } from '@mui/system';
 
 const Main = () => {
@@ -16,6 +17,7 @@ const Main = () => {
     const [page, setPage] = useState(0);
     const [coins, setCoins] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    const navigate = useNavigate();
 
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
@@ -68,7 +70,7 @@ const Main = () => {
               ? coins.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : coins
             ).map((coin)=>(
-            <TableBody key={coin.id} sx={{"tr":{backgroundColor: "grey.900"}}} >
+            <TableBody onClick={()=> navigate(`coin/${coin.id}`)} key={coin.id} sx={{"tr":{backgroundColor: "grey.900", cursor:"pointer"}}} >
               <TableRow className="coin-container" >
                 <TableCell sx={{color:"white"}}>{coin.market_cap_rank}</TableCell>
                 <TableCell sx={{color:"white"}}> <div className='coin-content'> <img src={coin.image} alt="coin"/>{coin.name} </div></TableCell>
