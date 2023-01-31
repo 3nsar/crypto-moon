@@ -41,7 +41,15 @@ body{
 .coin-container{
   font-size: 15px;
   font-weight: 600;
-  
+}
+
+.coin-content{
+  display: flex;
+  align-items: center;
+}
+
+.coin-content img{
+  margin-right: 6px;
 }
 
 .coin-container img{

@@ -28,35 +28,36 @@ const Main = () => {
       marginLeft: "auto",
       marginRight: "auto",
       marginTop: 5,
-      borderRadius: 2
+      borderRadius: 2,
+
     }
    
 
     
   return (
     <TableContainer component={Paper} sx={tableContainerSx}>
-        <Table  aria-label="simple table">
-         <TableHead>
-              <TableRow>
-               <TableCell >#</TableCell>
-               <TableCell >Coin</TableCell>
-               <TableCell>Price</TableCell>
-               <TableCell >24h</TableCell>
-               <TableCell >7d</TableCell>
-               <TableCell >Volume</TableCell>
-               <TableCell >Mkt-Cap</TableCell>
+        <Table aria-label="simple table" stickyHeader={true}>
+         <TableHead >
+              <TableRow >
+               <TableCell sx={{backgroundColor:"blue", color:"white"}}>#</TableCell>
+               <TableCell sx={{backgroundColor:"blue", color:"white"}}>Coin</TableCell>
+               <TableCell sx={{backgroundColor:"blue", color:"white"}}>Price</TableCell>
+               <TableCell sx={{backgroundColor:"blue", color:"white"}}>24h</TableCell>
+               <TableCell sx={{backgroundColor:"blue", color:"white"}}>7d</TableCell>
+               <TableCell sx={{backgroundColor:"blue", color:"white"}}>Volume</TableCell>
+               <TableCell sx={{backgroundColor:"blue", color:"white"}}>Mkt-Cap</TableCell>
               </TableRow>
           </TableHead>
             {coins.map((coin)=>(
-            <TableBody key={coin.id}>
-              <TableRow className="coin-container">
-                <TableCell >{coin.market_cap_rank}</TableCell>
-                <TableCell ><img src={coin.image} alt="coin"/>{coin.name}</TableCell>
-                <TableCell >{coin.current_price}€</TableCell>
-                <TableCell >{parseFloat(coin.price_change_percentage_24h).toFixed(2)}%</TableCell>
-                <TableCell >{parseFloat(coin.price_change_percentage_1h).toFixed(2)}%</TableCell>
-                <TableCell >{coin.total_volume}€</TableCell>
-                <TableCell >{coin.market_cap}€</TableCell>
+            <TableBody key={coin.id} sx={{"tr":{backgroundColor: "grey.900"}}} >
+              <TableRow className="coin-container" >
+                <TableCell sx={{color:"white"}}>{coin.market_cap_rank}</TableCell>
+                <TableCell sx={{color:"white"}}> <div className='coin-content'> <img src={coin.image} alt="coin"/>{coin.name} </div></TableCell>
+                <TableCell sx={{color:"white"}}>{coin.current_price}€</TableCell>
+                <TableCell sx={{color:"white"}}>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}%</TableCell>
+                <TableCell sx={{color:"white"}}>{parseFloat(coin.price_change_percentage_1h).toFixed(2)}%</TableCell>
+                <TableCell sx={{color:"white"}}>{coin.total_volume}€</TableCell>
+                <TableCell sx={{color:"white"}}>{coin.market_cap}€</TableCell>
               </TableRow>
             </TableBody>  
               ))}
