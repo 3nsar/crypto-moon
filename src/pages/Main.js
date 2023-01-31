@@ -7,11 +7,25 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import { SxProps } from '@mui/material';
+import TablePagination from '@mui/material/TablePagination';
+
 const Main = () => {
-    const [coins, setCoins] = useState([])
-    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=15&page=1&sparkline=true";
+    
+    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=40&page=1&sparkline=true";
+    const [page, setPage] = useState(0);
+    const [coins, setCoins] = useState([]);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+
+    const handleChangePage = (event, newPage) => {
+      setPage(newPage);
+    };
+  
+    const handleChangeRowsPerPage = (event) => {
+      setRowsPerPage(parseInt(event.target.value, 10));
+      setPage(0);
+    };
+
+    const emptyRows = page >0 ? Math.max(0,(1 + page)* rowsPerPage - coins.length) : 0;
 
 
     useEffect(()=>{
@@ -35,10 +49,11 @@ const Main = () => {
 
     
   return (
+   
     <TableContainer component={Paper} sx={tableContainerSx}>
         <Table aria-label="simple table" stickyHeader={true}>
          <TableHead >
-              <TableRow >
+              <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "800", borderBottom: "none"}}}>
                <TableCell sx={{backgroundColor:"blue", color:"white"}}>#</TableCell>
                <TableCell sx={{backgroundColor:"blue", color:"white"}}>Coin</TableCell>
                <TableCell sx={{backgroundColor:"blue", color:"white"}}>Price</TableCell>
@@ -48,7 +63,10 @@ const Main = () => {
                <TableCell sx={{backgroundColor:"blue", color:"white"}}>Mkt-Cap</TableCell>
               </TableRow>
           </TableHead>
-            {coins.map((coin)=>(
+          {(rowsPerPage > 0
+              ? coins.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : coins
+            ).map((coin)=>(
             <TableBody key={coin.id} sx={{"tr":{backgroundColor: "grey.900"}}} >
               <TableRow className="coin-container" >
                 <TableCell sx={{color:"white"}}>{coin.market_cap_rank}</TableCell>
@@ -62,8 +80,18 @@ const Main = () => {
             </TableBody>  
               ))}
         </Table>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={coins.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+ 
       </TableContainer>
-    
+      
   )
 }
 
