@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { useNavigate } from 'react-router'
+
 import { maxWidth } from '@mui/system';
 
 const Main = () => {
@@ -50,7 +51,7 @@ const Main = () => {
       marginBottom: 4
 
     }
-    
+
   return (
    
     <TableContainer component={Paper} sx={tableContainerSx}>
