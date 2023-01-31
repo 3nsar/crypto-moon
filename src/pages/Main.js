@@ -8,13 +8,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
+import { maxWidth } from '@mui/system';
 
 const Main = () => {
     
     const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=40&page=1&sparkline=true";
     const [page, setPage] = useState(0);
     const [coins, setCoins] = useState([]);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
 
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
@@ -38,15 +39,15 @@ const Main = () => {
     },[])
 
     const tableContainerSx = {
-      width: "max-content",
+      //width: "max-content",
+      maxWidth: 1150,
       marginLeft: "auto",
       marginRight: "auto",
       marginTop: 5,
       borderRadius: 2,
+      marginBottom: 4
 
     }
-   
-
     
   return (
    
@@ -71,23 +72,28 @@ const Main = () => {
               <TableRow className="coin-container" >
                 <TableCell sx={{color:"white"}}>{coin.market_cap_rank}</TableCell>
                 <TableCell sx={{color:"white"}}> <div className='coin-content'> <img src={coin.image} alt="coin"/>{coin.name} </div></TableCell>
-                <TableCell sx={{color:"white"}}>{coin.current_price}€</TableCell>
-                <TableCell sx={{color:"white"}}>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}%</TableCell>
+                <TableCell sx={{color:"white"}}>{parseFloat(coin.current_price).toLocaleString()}€</TableCell>
+                <TableCell sx={{color:"white"}}>
+                { coin.price_change_percentage_24h < 0 ?
+                  <div className='red'>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}% </div> : <div className='green'>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}% </div>}
+                  </TableCell>
                 <TableCell sx={{color:"white"}}>{parseFloat(coin.price_change_percentage_1h).toFixed(2)}%</TableCell>
-                <TableCell sx={{color:"white"}}>{coin.total_volume}€</TableCell>
-                <TableCell sx={{color:"white"}}>{coin.market_cap}€</TableCell>
+                <TableCell sx={{color:"white"}}>{parseFloat(coin.total_volume).toLocaleString()}€</TableCell>
+                <TableCell sx={{color:"white"}}>{parseFloat(coin.market_cap).toLocaleString()}€</TableCell>
               </TableRow>
             </TableBody>  
               ))}
         </Table>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          sx={{backgroundColor: "grey.900", color:"white"}}
+          rowsPerPageOptions={[10, 15, 25]}
           component="div"
           count={coins.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
+
         />
  
       </TableContainer>

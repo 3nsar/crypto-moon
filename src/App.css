@@ -55,3 +55,11 @@ body{
 .coin-container img{
   height: 40px;
 }
+
+.red{
+  color: 	#FF0000;
+}
+
+.green{
+  color: #00ff00;
+}
