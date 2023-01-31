@@ -5,7 +5,7 @@
 }
 
 body{
-  background-color: #303030;
+  background-color: #000000;
   font-family: fantasy;
   color: white;
   font-size: 12px;
@@ -41,6 +41,7 @@ body{
 .coin-container{
   font-size: 15px;
   font-weight: 600;
+  
 }
 
 .coin-container img{

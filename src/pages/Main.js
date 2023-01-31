@@ -1,12 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Table from 'react-bootstrap/Table';
-
-const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=5&page=1&sparkline=true";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell , { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 
 const Main = () => {
     const [coins, setCoins] = useState([])
+    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=15&page=1&sparkline=true";
+
 
     useEffect(()=>{
       const loadingCoins = async ()=>{
@@ -17,32 +23,47 @@ const Main = () => {
       loadingCoins()
     },[])
 
+    const StyledTableCell = styled(TableCell)(({ theme }) => ({
+      [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+      },
+      [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+      },
+    }));
+
     
   return (
-        <Table variant="dark" className="coin-container">
-             <thead>
-              <tr>
-               <th>#</th>
-               <th>Coin</th>
-               <th>Price</th>
-               <th>24h</th>
-               <th>Volume</th>
-               <th>Mkt-Cap</th>
-              </tr>
-            </thead>
+    <TableContainer component={Paper}>
+        <Table sx={{ maxWidth: 1150 }} aria-label="simple table">
+         <TableHead>
+              <TableRow>
+               <StyledTableCell >#</StyledTableCell>
+               <StyledTableCell >Coin</StyledTableCell>
+               <StyledTableCell>Price</StyledTableCell>
+               <StyledTableCell >24h</StyledTableCell>
+               <StyledTableCell >7d</StyledTableCell>
+               <StyledTableCell >Volume</StyledTableCell>
+               <StyledTableCell >Mkt-Cap</StyledTableCell>
+              </TableRow>
+          </TableHead>
             {coins.map((coin)=>(
-            <tbody key={coin.id}>
-              <tr>
-                <td>{coin.market_cap_rank}</td>
-                <td><img src={coin.image} alt="coin"/>{coin.name}</td>
-                <td>{coin.current_price}€</td>
-                <td>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}%</td>
-                <td>{coin.total_volume}€</td>
-                <td>{coin.market_cap}€</td>
-              </tr>
-            </tbody>  
+            <TableBody key={coin.id}>
+              <TableRow className="coin-container">
+                <TableCell >{coin.market_cap_rank}</TableCell>
+                <TableCell ><img src={coin.image} alt="coin"/>{coin.name}</TableCell>
+                <TableCell >{coin.current_price}€</TableCell>
+                <TableCell >{parseFloat(coin.price_change_percentage_24h).toFixed(2)}%</TableCell>
+                <TableCell >{parseFloat(coin.price_change_percentage_1h).toFixed(2)}%</TableCell>
+                <TableCell >{coin.total_volume}€</TableCell>
+                <TableCell >{coin.market_cap}€</TableCell>
+              </TableRow>
+            </TableBody>  
               ))}
         </Table>
+      </TableContainer>
+    
   )
 }
 
