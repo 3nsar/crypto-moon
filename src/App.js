@@ -18,7 +18,7 @@ const [user] = useAuthState(auth)
    <Router >
       <Navbar />
       <Routes>
-       <Route exact path="/" element={user == null ? <Login /> : ""}/> 
+       <Route exact path="/" element={user == null ? <Login /> : <Main />}/> 
        <Route path="/coin/:id" element={<Coin />}/> 
        <Route exact path="/main" element={<Main /> }/>
       </Routes>  

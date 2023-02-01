@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import HistoryChart from './HistoryChart';
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { db,auth } from '../config/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { LoginContext } from '../helper/LoginContext'
 const Coin = () => {
 
@@ -11,12 +12,7 @@ const Coin = () => {
     const [info, setInfo] = useState("");
     const [loading, setLoading] = useState(false);
     const { id } = useParams()
-    const [likesAmount, setLikesAmount] = useState(0)
 
-    const likesRef = collection(db,"likes")
-    const likesDoc = query(likesRef, where ("userId","==",user.uid))
-    
-    
     useEffect(()=>{
         const loadData = async ()=>{
             setLoading(true)
@@ -27,20 +23,6 @@ const Coin = () => {
         }
         loadData()
      },[]);
-
-    const addLike = async () =>{
-        await addDoc(likesRef, {userId: user.uid, coinId: info.id})
-    }
-
-    const getLikes = async ()=>{
-        const data = await getDocs(likesDoc)
-        setLikesAmount(data.docs.length)
-    }
-
-    useEffect(()=>{
-        getLikes()
-    },[])
-
   
 
   if(info){
@@ -54,8 +36,6 @@ const Coin = () => {
             <h1>Rank: {info.coingecko_rank}</h1>
             <h1>What is {info.name} ?</h1>
             <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>
-            <button onClick={addLike}> LIKE +</button>
-            <p>Likes: {likesAmount}</p>
             <HistoryChart />
             
         </div>
