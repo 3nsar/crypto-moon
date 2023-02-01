@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react'
 import { db } from '../config/firebase'
 import { addDoc, collection, getDocs, limitToLast, orderBy, query, serverTimestamp, where } from 'firebase/firestore';
 import {useCollection} from "react-firebase-hooks/firestore"
@@ -10,6 +10,7 @@ const Chat = () => {
     const [messages]= useCollection(queryRef, {idField: "id"})
     const [formValue, setFormValue] = useState("")
     const {user} = useContext(LoginContext)
+    const scrollTo = useRef(null)
 
     const sendMessage = async (e) =>{
         e.preventDefault()
@@ -22,9 +23,14 @@ const Chat = () => {
         setFormValue("")
     }
 
+    useEffect(()=>{
+        scrollTo.current.scrollIntoView({behavior:"smooth"})
+    })
+
   return (
     <div>
         <div className="messages">
+            <div ref={scrollTo}></div>
             {messages && messages.docs.map(msg => <ChatMessage key={msg.id} messages={msg.data()}/>)}
         </div>
         <form>

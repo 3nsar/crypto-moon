@@ -8,11 +8,11 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { LoginContext } from '../helper/LoginContext'
 const Coin = () => {
 
-    const [user] = useAuthState(auth)
+    const {user} = useContext(LoginContext)
     const [info, setInfo] = useState("");
     const [loading, setLoading] = useState(false);
     const { id } = useParams()
- 
+
     useEffect(()=>{
         const loadData = async ()=>{
             setLoading(true)
@@ -23,7 +23,7 @@ const Coin = () => {
         }
         loadData()
      },[]);
-
+  
 
   if(info){
       
@@ -37,7 +37,7 @@ const Coin = () => {
             <h1>What is {info.name} ?</h1>
             <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>
 
-            <HistoryChart />
+            <HistoryChart /> 
             
         </div>
     ) 
