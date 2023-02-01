@@ -69,7 +69,7 @@ const Main = () => {
               ? coins.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : coins
             ).map((coin)=>(
-            <TableBody onClick={()=> navigate(`coin/${coin.id}`)} key={coin.id} sx={{"tr":{backgroundColor: "grey.900", cursor:"pointer"}}} >
+            <TableBody onClick={()=> navigate(`/coin/${coin.id}`)} key={coin.id} sx={{"tr":{backgroundColor: "grey.900", cursor:"pointer"}}} >
               <TableRow className="coin-container" >
                 <TableCell sx={{color:"white"}}>{coin.market_cap_rank}</TableCell>
                 <TableCell sx={{color:"white"}}> <div className='coin-content'> <img src={coin.image} alt="coin"/>{coin.name} </div></TableCell>

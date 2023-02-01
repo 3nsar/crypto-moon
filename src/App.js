@@ -3,20 +3,29 @@ import Navbar from './components/Navbar';
 import Main from './pages/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Coin from './pages/Coin';
+import { LoginContext } from './helper/LoginContext';
+import { useAuthState } from "react-firebase-hooks/auth"
+import { auth } from './config/firebase'
+import Login from './pages/Login';
 
 function App() {
+  
+const [user] = useAuthState(auth)
+
   return (
     <div className='App'>
+  <LoginContext.Provider value={{user}}>
    <Router >
       <Navbar />
       <Routes>
-       <Route exact path="/" element={<Main/> }/>
+       <Route exact path="/" element={user == null ? <Login /> : ""}/> 
        <Route path="/coin/:id" element={<Coin />}/> 
-      </Routes>
-      
+       <Route exact path="/main" element={<Main /> }/>
+      </Routes>  
     </Router>
+  </LoginContext.Provider>  
+
     </div>
-    
   );
 }
 

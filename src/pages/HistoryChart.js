@@ -29,10 +29,8 @@ ChartJS.register(
 
 
 const HistoryChart = () => {
-  const [days, setDays] = useState(30)
   const { id } = useParams();
-  const { response } = useAxios(`coins/${id}/market_chart?vs_currency=usd&days=${days}`);
-
+  const { response } = useAxios(`coins/${id}/market_chart?vs_currency=usd&days=7`);
 
   if(!response) {
     return (
@@ -62,9 +60,6 @@ const HistoryChart = () => {
  
   return (
     <div>
-      <button>1 week</button>
-      <button>2 weeks</button>
-      <button>1 month</button>
       <Line options={options} data={data} />
     </div>
   )

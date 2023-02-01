@@ -31,7 +31,7 @@ const Coin = () => {
             <h1>Rank: {info.coingecko_rank}</h1>
             <h1>What is {info.name} ?</h1>
             <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>
-            <HistoryChart/>
+            <HistoryChart />
             
         </div>
     ) 
