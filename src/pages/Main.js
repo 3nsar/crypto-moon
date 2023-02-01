@@ -10,8 +10,6 @@ import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { useNavigate } from 'react-router'
 
-import { maxWidth } from '@mui/system';
-
 const Main = () => {
     
     const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=40&page=1&sparkline=true";
@@ -58,7 +56,7 @@ const Main = () => {
         <Table aria-label="simple table" stickyHeader={true}>
          <TableHead >
               <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "800", borderBottom: "none"}}}>
-               <TableCell sx={{backgroundColor:"blue", color:"white"}}>#</TableCell>
+               <TableCell sx={{backgroundColor:"rgb(215,255,0)", color:"white"}}>#</TableCell>
                <TableCell sx={{backgroundColor:"blue", color:"white"}}>Coin</TableCell>
                <TableCell sx={{backgroundColor:"blue", color:"white"}}>Price</TableCell>
                <TableCell sx={{backgroundColor:"blue", color:"white"}}>24h</TableCell>

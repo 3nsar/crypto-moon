@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { chartDays } from "../config/data"
 import useAxios from "../hooks/useAxios"
 import {
   Chart as ChartJS,
@@ -13,6 +14,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import moment from "moment";
+import { useEffect, useState } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -27,9 +29,11 @@ ChartJS.register(
 
 
 const HistoryChart = () => {
+  const [days, setDays] = useState(30)
   const { id } = useParams();
-  const { response } = useAxios(`coins/${id}/market_chart?vs_currency=usd&days=7`);
-  
+  const { response } = useAxios(`coins/${id}/market_chart?vs_currency=usd&days=${days}`);
+
+
   if(!response) {
     return (
       <div>
@@ -37,6 +41,7 @@ const HistoryChart = () => {
       </div>
     )
   }
+
   const coinChartData = response.prices.map(value => ({ x: value[0], y: value[1].toFixed(2) }));
   
   const options = {
@@ -54,9 +59,12 @@ const HistoryChart = () => {
       }
     ]
   }
-
+ 
   return (
     <div>
+      <button>1 week</button>
+      <button>2 weeks</button>
+      <button>1 month</button>
       <Line options={options} data={data} />
     </div>
   )

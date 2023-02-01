@@ -21,19 +21,21 @@ const Coin = () => {
   },[]);
   
 
-
-    return(  
-      <div className='singlecoin-container'>
-        <div className='singlecoin-title'> 
-           <img src={info.image.large}/>
-           <h1>{info.name}</h1>
-           <h1>Rank: {info.coingecko_rank}</h1>
+  if(info){
+      
+    return(
+        
+        <div>
+            <img src={info.image.large}/>
+            <h1>{info.name}</h1>
+            <h1>Rank: {info.coingecko_rank}</h1>
+            <h1>What is {info.name} ?</h1>
+            <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>
+            <HistoryChart/>
+            
         </div>
-        <h1>What is {info.name}</h1>
-        <div className='singlecoin-text' dangerouslySetInnerHTML={{__html: info.description.en}}/>
-        <HistoryChart/>
-     </div>
-    )
+    ) 
+}
 }
 
 export default Coin
