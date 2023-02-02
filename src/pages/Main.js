@@ -9,6 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { useNavigate } from 'react-router'
+import { FiArrowUpCircle, FiArrowDownCircle } from 'react-icons/fi';
+
 
 const Main = () => {
     
@@ -18,6 +20,27 @@ const Main = () => {
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const navigate = useNavigate();
     const [coinSearch,setCoinSearch] = useState("")
+    const [order, setOrder] = useState("ASC")
+    const [sorted, setSorted] = useState({sorted: "market_cap_rank", reversed: false})
+
+
+    const sorting = (val)=>{
+      if(order ==="ASC"){
+        const sorted = [...coins].sort((a,b)=> 
+        a[val].toLowerCase() > b[val].toLowerCase() ? 1 : -1
+        );
+        setCoins(sorted)
+        setOrder("DSC")
+      }
+      if(order ==="DSC"){
+        const sorted = [...coins].sort((a,b)=> 
+        a[val].toLowerCase() < b[val].toLowerCase() ? 1 : -1
+        );
+        setCoins(sorted)
+        setOrder("ASC")
+      }
+    };
+
 
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
@@ -40,6 +63,20 @@ const Main = () => {
       loadingCoins()
     },[])
 
+    
+    const sortById = ()=>{
+     setSorted({sorted: "market_cap_rank", reversed: !sorted.reversed});
+     const coinsCopy = [...coins];
+      coinsCopy.sort((coinA, coinB)=>{
+        if(sorted.reversed){
+          return coinA.market_cap_rank - coinB.market_cap_rank
+        }
+         return coinB.market_cap_rank - coinA.market_cap_rank
+      });
+      setCoins(coinsCopy);
+      console.log(coins)
+    };
+
     const tableContainerSx = {
       //width: "max-content",
       maxWidth: 1150,
@@ -60,13 +97,13 @@ const Main = () => {
         <Table aria-label="simple table" stickyHeader={true}>
          <TableHead >
               <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "800", borderBottom: "none"}}}>
-               <TableCell sx={{backgroundColor:"rgb(215,255,0)", color:"white"}}>#</TableCell>
-               <TableCell sx={{backgroundColor:"blue", color:"white"}}>Coin</TableCell>
-               <TableCell sx={{backgroundColor:"blue", color:"white"}}>Price</TableCell>
-               <TableCell sx={{backgroundColor:"blue", color:"white"}}>24h</TableCell>
-               <TableCell sx={{backgroundColor:"blue", color:"white"}}>7d</TableCell>
-               <TableCell sx={{backgroundColor:"blue", color:"white"}}>Volume</TableCell>
-               <TableCell sx={{backgroundColor:"blue", color:"white"}}>Mkt-Cap</TableCell>
+               <TableCell onClick={sortById} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>#</TableCell>
+               <TableCell onClick={()=>sorting("name")}sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin {order ==="ASC" ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Price</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>24h</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>7d</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Volume</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Mkt-Cap</TableCell>
               </TableRow>
           </TableHead>
           
@@ -88,8 +125,8 @@ const Main = () => {
                 <TableCell sx={{color:"white"}}> <div className='coin-content'> <img src={coin.image} alt="coin"/>{coin.name} </div></TableCell>
                 <TableCell sx={{color:"white"}}>{parseFloat(coin.current_price).toLocaleString()}€</TableCell>
                 <TableCell sx={{color:"white"}}>
-                { coin.price_change_percentage_24h < 0 ?
-                  <div className='red'>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}% </div> : <div className='green'>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}% </div>}
+                { coin.price_change_percentage_24h >= 0 ?
+                  <div className='green'>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}% </div> : <div className='red'>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}% </div>}
                   </TableCell>
                 <TableCell sx={{color:"white"}}>{parseFloat(coin.price_change_percentage_1h).toFixed(2)}%</TableCell>
                 <TableCell sx={{color:"white"}}>{parseFloat(coin.total_volume).toLocaleString()}€</TableCell>
