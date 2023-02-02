@@ -77,6 +77,19 @@ const Main = () => {
       console.log(coins)
     };
 
+    const sortBy24h = ()=>{
+      setSorted({sorted: "price_change_percentage_24h", reversed: !sorted.reversed});
+      const coinsCopy = [...coins];
+       coinsCopy.sort((coinA, coinB)=>{
+         if(sorted.reversed){
+           return coinA.price_change_percentage_24h - coinB.price_change_percentage_24h
+         }
+          return coinB.price_change_percentage_24h - coinA.price_change_percentage_24h
+       });
+       setCoins(coinsCopy);
+       console.log(coins)
+     };
+
     const tableContainerSx = {
       //width: "max-content",
       maxWidth: 1150,
@@ -100,10 +113,10 @@ const Main = () => {
                <TableCell onClick={sortById} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>#</TableCell>
                <TableCell onClick={()=>sorting("name")}sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin {order ==="ASC" ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
                <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Price</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>24h</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>7d</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Volume</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Mkt-Cap</TableCell>
+               <TableCell onClick={sortBy24h}sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>24h</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>7d</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Volume</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Mkt-Cap</TableCell>
               </TableRow>
           </TableHead>
           
