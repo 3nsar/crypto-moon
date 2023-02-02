@@ -17,6 +17,7 @@ const Main = () => {
     const [coins, setCoins] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const navigate = useNavigate();
+    const [coinSearch,setCoinSearch] = useState("")
 
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
@@ -51,7 +52,10 @@ const Main = () => {
     }
 
   return (
-   
+   <div>
+      <div className="input-bar">
+        <input  type="text" placeholder="Search" onChange={(e)=> setCoinSearch(e.target.value)}/>
+      </div>
     <TableContainer component={Paper} sx={tableContainerSx}>
         <Table aria-label="simple table" stickyHeader={true}>
          <TableHead >
@@ -65,10 +69,19 @@ const Main = () => {
                <TableCell sx={{backgroundColor:"blue", color:"white"}}>Mkt-Cap</TableCell>
               </TableRow>
           </TableHead>
-          {(rowsPerPage > 0
+          
+          {( rowsPerPage > 0
               ? coins.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : coins
-            ).map((coin)=>(
+            ).filter((val)=>{
+              if(coinSearch ===""){
+                  return val
+              }else if (val.name.toLowerCase().includes(coinSearch.toLowerCase())){
+                  return val
+              }
+
+          })
+            .map((coin)=>(
             <TableBody onClick={()=> navigate(`/coin/${coin.id}`)} key={coin.id} sx={{"tr":{backgroundColor: "grey.900", cursor:"pointer"}}} >
               <TableRow className="coin-container" >
                 <TableCell sx={{color:"white"}}>{coin.market_cap_rank}</TableCell>
@@ -98,6 +111,7 @@ const Main = () => {
         />
  
       </TableContainer>
+    </div>
       
   )
 }
