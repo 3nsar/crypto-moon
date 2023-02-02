@@ -90,6 +90,32 @@ const Main = () => {
        console.log(coins)
      };
 
+     const sortByVolume = ()=>{
+      setSorted({sorted: "total_volume", reversed: !sorted.reversed});
+      const coinsCopy = [...coins];
+       coinsCopy.sort((coinA, coinB)=>{
+         if(sorted.reversed){
+           return coinA.total_volume - coinB.total_volume
+         }
+          return coinB.total_volume - coinA.total_volume
+       });
+       setCoins(coinsCopy);
+       console.log(coins)
+     };
+
+     const sortByMktCap = ()=>{
+      setSorted({sorted: "market_cap", reversed: !sorted.reversed});
+      const coinsCopy = [...coins];
+       coinsCopy.sort((coinA, coinB)=>{
+         if(sorted.reversed){
+           return coinA.market_cap - coinB.market_cap
+         }
+          return coinB.market_cap - coinA.market_cap
+       });
+       setCoins(coinsCopy);
+       console.log(coins)
+     };
+
     const tableContainerSx = {
       //width: "max-content",
       maxWidth: 1150,
@@ -111,12 +137,12 @@ const Main = () => {
          <TableHead >
               <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "800", borderBottom: "none"}}}>
                <TableCell onClick={sortById} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>#</TableCell>
-               <TableCell onClick={()=>sorting("name")}sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin {order ==="ASC" ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
+               <TableCell onClick={()=>sorting("name")} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin {order ==="ASC" ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
                <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Price</TableCell>
-               <TableCell onClick={sortBy24h}sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>24h</TableCell>
+               <TableCell onClick={sortBy24h} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>24h</TableCell>
                <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>7d</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Volume</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Mkt-Cap</TableCell>
+               <TableCell onClick={sortByVolume} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Volume</TableCell>
+               <TableCell onClick={sortByMktCap} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Mkt-Cap</TableCell>
               </TableRow>
           </TableHead>
           
