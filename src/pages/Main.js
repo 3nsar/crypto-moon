@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { useNavigate } from 'react-router'
 import { FiArrowUpCircle, FiArrowDownCircle } from 'react-icons/fi';
-
+import {CgArrowsExchangeAltV} from 'react-icons/cg';
 
 const Main = () => {
     
@@ -150,12 +150,12 @@ const Main = () => {
          <TableHead >
               <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "800", borderBottom: "none"}}}>
                <TableCell onClick={sortById} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>#</TableCell>
-               <TableCell onClick={()=>sorting("name")} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin {order ==="ASC" ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
-               <TableCell onClick={sortByPrice} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Price {sorted.reversed === false ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
-               <TableCell onClick={sortBy24h} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>24h {sorted.reversed === false ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>7d {sorted.reversed === false ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
-               <TableCell onClick={sortByVolume} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Volume {sorted.reversed === false ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
-               <TableCell onClick={sortByMktCap} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Mkt-Cap {sorted.reversed === false ? <FiArrowUpCircle/> : <FiArrowDownCircle/>}</TableCell>
+               <TableCell onClick={()=>sorting("name")} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin {<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortByPrice} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Price {<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortBy24h} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>24h {<CgArrowsExchangeAltV />}</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>7d {<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortByVolume} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Volume {<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortByMktCap} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Mkt-Cap {<CgArrowsExchangeAltV/>}</TableCell>
               </TableRow>
           </TableHead>
           

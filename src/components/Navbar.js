@@ -18,9 +18,9 @@ const Navbar = () => {
       <h1>CRYPTO-MOON</h1>
       <h1>{user.displayName}</h1>
       <ul className='navbar-list'>
-        <li>Chat</li>
-        <li>Market</li>
-        <li>News</li>
+        <li>CHAT</li>
+        <li >MARKET</li>
+        <li>NEWS</li>
         <button onClick={signUserOut}>LOG OUT</button>
       </ul>
       </>

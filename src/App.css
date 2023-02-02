@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran&family=Orbitron:wght@500&family=Rowdies:wght@300&display=swap');
+
 *{
   padding: 0;
   margin: 0;
@@ -8,7 +10,6 @@ body{
   background-color: #282828;
   font-family: fantasy;
   color: white;
-  font-size: 12px;
 }
 
 .navbar-container{
@@ -18,6 +19,10 @@ body{
   max-width: 1480px;
   padding: 1rem;
   background-color: rgb(42, 41, 41);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(0.25turn, #304ffe, rgba(255,0,128), rgba(56,2,155,0));
+  border-image-slice: 1;
+  width:100%;
 }
 
 .navbar-container ul{
@@ -27,8 +32,21 @@ body{
 
 .navbar-container li{
   margin-left: 1rem;
- 
+  font-size: 12px;
+  cursor: pointer;
 }
+
+.navbar-container li:hover{
+  color: #304ffe;
+  transition: all 0.8s;
+
+}
+
+.navbar-container h1{
+  font-family: Orbitron;
+}
+
+
 
 .navbar-list{
   display: flex;
