@@ -38,7 +38,7 @@ body{
 }
 
 .navbar-container li:hover{
-  color: #304ffe;
+  color: rgba(255,0,128);
   transition: all 0.8s;
 
 }
@@ -74,12 +74,13 @@ body{
 
 .input-bar input{
   background-image: linear-gradient(to right, #304ffe , rgba(255,0,128));
-  height: 40px;
+  height: 35px;
   color: white;
   font-size: 16px;
   width: 200px;
   border: none;
   border-radius: 10px;
+  margin-top: 20px;
 }
 /*=========== Coin-Container =====*/
 
@@ -107,4 +108,15 @@ body{
 
 .green{
   color: #00ff00;
+}
+
+/*========= Banner ============*/
+
+.banner-content {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 25;
+  justify-content: space-between;
+  background-color: #000000;
 }

@@ -11,6 +11,7 @@ import TablePagination from '@mui/material/TablePagination';
 import { useNavigate } from 'react-router'
 import { FiArrowUpCircle, FiArrowDownCircle } from 'react-icons/fi';
 import {CgArrowsExchangeAltV} from 'react-icons/cg';
+import Banner from '../components/Banner';
 
 const Main = () => {
     
@@ -142,6 +143,7 @@ const Main = () => {
 
   return (
    <div>
+    <Banner/>
       <div className="input-bar">
         <input  type="text" placeholder="SEARCH..." onChange={(e)=> setCoinSearch(e.target.value)}/>
       </div>
@@ -162,12 +164,12 @@ const Main = () => {
           {( rowsPerPage > 0
               ? coins.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : coins
-            ).filter((val)=>{
-              if(coinSearch ===""){
-                  return val
-              }else if (val.name.toLowerCase().includes(coinSearch.toLowerCase())){
-                  return val
-              }
+              ).filter((val)=>{
+                if(coinSearch ===""){
+                    return val
+                }else if (val.name.toLowerCase().includes(coinSearch.toLowerCase())){
+                    return val
+                }
 
           })
             .map((coin)=>(
