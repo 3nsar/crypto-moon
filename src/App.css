@@ -33,6 +33,7 @@ body{
 .navbar-container li{
   margin-left: 1rem;
   font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -53,7 +54,33 @@ body{
   align-items: center;
   justify-content: center;
 }
+.navbar-list button{
+  background-color: #304ffe;
+  cursor: pointer;
+  border: none;
+  padding: 5px 6px 5px 6px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+}
 
+/*============ SEARCHBAR ========*/
+
+.input-bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-bar input{
+  background-image: linear-gradient(to right, #304ffe , rgba(255,0,128));
+  height: 40px;
+  color: white;
+  font-size: 16px;
+  width: 200px;
+  border: none;
+  border-radius: 10px;
+}
 /*=========== Coin-Container =====*/
 
 .coin-container{

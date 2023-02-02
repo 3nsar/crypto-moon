@@ -16,7 +16,7 @@ const Navbar = () => {
     {user && (
       <>
       <h1>CRYPTO-MOON</h1>
-      <h1>{user.displayName}</h1>
+      {/*<h1>{user.displayName}</h1>*/}
       <ul className='navbar-list'>
         <li>CHAT</li>
         <li >MARKET</li>
