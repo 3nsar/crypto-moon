@@ -145,7 +145,7 @@ const Main = () => {
    <div>
     <Banner/>
       <div className="input-bar">
-        <input  type="text" placeholder="SEARCH..." onChange={(e)=> setCoinSearch(e.target.value)}/>
+        <input  type="text" placeholder=" SEARCH..." onChange={(e)=> setCoinSearch(e.target.value)}/>
       </div>
     <TableContainer component={Paper} sx={tableContainerSx}>
         <Table aria-label="simple table" stickyHeader={true}>
