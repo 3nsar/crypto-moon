@@ -136,3 +136,14 @@ body{
   justify-content: center;
   height: 100vh;
 }
+
+.log-btn{
+  padding: 10px 20px 10px 20px;
+  background-color: rgba(255,0,128);
+  color: white;
+  font-family: Orbitron;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+
+}
