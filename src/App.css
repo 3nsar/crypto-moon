@@ -135,6 +135,11 @@ body{
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  background-image: url("pexels-jakson-martins-8700702.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .log-btn{
@@ -145,5 +150,6 @@ body{
   border: none;
   border-radius: 10px;
   font-weight: 700;
+  cursor: pointer;
 
 }
