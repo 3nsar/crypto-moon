@@ -158,31 +158,44 @@ video{
 /*======== CHAT =======*/
 
 .messages{
-  align-items: center;
-  background-color: rgb(25, 25, 25);
-  border-radius: 5px;
-  display: flex;
-  width: 100%;
-  padding: 15px;
-  justify-content: center;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+} 
+
+.messages p{
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: white;
+  text-align: center;
+  border: 2px solid red;
   flex-direction: column-reverse;
   overflow-y: auto;
 }
-form{
+
+.messages img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 2px 5px;
+}
+
+.sent{
+  flex-direction: row-reverse;
   display: flex;
-  height: 3rem;
-  margin-top: 2rem;
-  width: 100%;
-  
+  align-items: center;
 }
-form button{
-  background-color: #00ff00;
-  cursor: pointer;
-  transition: .25s;
-  font-size: 12px;
+
+.sent p{
+  color: white;
+  background: #0b93f6;
+  align-self: flex-end;
 }
-.buttons{
+.recieved {
   display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+  align-items: center;
 }
+
