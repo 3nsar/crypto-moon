@@ -153,5 +153,36 @@ video{
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
+}
 
+/*======== CHAT =======*/
+
+.messages{
+  align-items: center;
+  background-color: rgb(25, 25, 25);
+  border-radius: 5px;
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  justify-content: center;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+}
+form{
+  display: flex;
+  height: 3rem;
+  margin-top: 2rem;
+  width: 100%;
+  
+}
+form button{
+  background-color: #00ff00;
+  cursor: pointer;
+  transition: .25s;
+  font-size: 12px;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
