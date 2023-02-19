@@ -28,7 +28,7 @@ const Chat = () => {
     })
 
   return (
-    <div>
+    <div className='messages-content'>
         <div className="messages">
             <div ref={scrollTo}></div>
             {messages && messages.docs.map(msg => <ChatMessage key={msg.id} messages={msg.data()}/>)}

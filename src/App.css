@@ -157,13 +157,24 @@ video{
 
 /*======== CHAT =======*/
 
+.messages-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .messages{
   flex-direction: column-reverse;
   overflow-y: auto;
-} 
+  border-radius: 10px;
+  max-width: 600px;
+  height: 300px;
+  display: flex;
+  background-color: #1C1C1C;
+}
 
 .messages p{
-  max-width: 500px;
   margin-bottom: 12px;
   line-height: 24px;
   padding: 10px 20px;
@@ -171,9 +182,6 @@ video{
   position: relative;
   color: white;
   text-align: center;
-  border: 2px solid red;
-  flex-direction: column-reverse;
-  overflow-y: auto;
 }
 
 .messages img{
@@ -193,9 +201,26 @@ video{
   color: white;
   background: #0b93f6;
   align-self: flex-end;
+  overflow-wrap: break-word;
+  max-width: 50%;
 }
 .recieved {
   display: flex;
   align-items: center;
 }
 
+.recieved p{
+  color: white;
+  background-color: rgb(168, 167, 167);
+}
+
+form input{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+
+form button{
+ padding: 10px;
+ cursor: pointer;
+}
