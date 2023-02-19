@@ -3,14 +3,18 @@ import { db } from '../config/firebase'
 import { addDoc, collection, getDocs, limitToLast, orderBy, query, serverTimestamp, where } from 'firebase/firestore';
 import {useCollection} from "react-firebase-hooks/firestore"
 import { LoginContext } from '../helper/LoginContext'
+import { SiRocketdotchat } from 'react-icons/si';
+import EmojiPicker from 'emoji-picker-react';
 
 const Chat = () => {
     const messagesRef = collection(db,"messages")
     const queryRef = query(messagesRef, orderBy("createdAt", "desc"),limitToLast())
     const [messages]= useCollection(queryRef, {idField: "id"})
-    const [formValue, setFormValue] = useState("")
     const {user} = useContext(LoginContext)
     const scrollTo = useRef(null)
+
+    const [formValue, setFormValue] = useState("")
+
 
     const sendMessage = async (e) =>{
         e.preventDefault()
@@ -35,7 +39,7 @@ const Chat = () => {
         </div>
         <form>
             <input value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
-            <button onClick={(e)=> sendMessage(e)}>Send</button>
+            <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white'/></button>
         </form>
     </div>
   )
