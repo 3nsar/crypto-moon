@@ -152,6 +152,7 @@ video{
 
 .login p{
   font-size: 25px;
+  
 }
 
 .log-btn{
@@ -252,8 +253,8 @@ form input{
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   height: 40px;
-  width: 300px;
-
+  width: 400px;
+  padding-left: 10px;
 }
 
 form button{
@@ -271,6 +272,7 @@ form button{
 .emoji-icon{
   height: 30px;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .chat-btn-container{

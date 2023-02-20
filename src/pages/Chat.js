@@ -49,7 +49,7 @@ const Chat = () => {
                     src={coolPic}
                     onClick={() => setShowPicker(val => !val)}
                   />
-                  <input value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
+                  <input placeholder=" Write here..." value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
                   <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white'/></button>
                 </div>
                   <div className='picker'>               
