@@ -13,6 +13,20 @@ const Coin = () => {
     const [loading, setLoading] = useState(false);
     const { id } = useParams()
 
+    const [likeAmount, setLikeAmount] = useState(null)
+    const likesRef = collection(db, "likes");
+    const likesDoc = query(likesRef, where("coinId", "==", id))
+    
+
+    const addLike = async () =>{
+        await addDoc(likesRef, {userId: user.uid, coinId: info.id});
+    }
+
+    const getLikes = async ()=> {
+        const data = await getDocs(likesDoc);
+        setLikeAmount(data.docs.length)
+    }
+
     useEffect(()=>{
         const loadData = async ()=>{
             setLoading(true)
@@ -23,7 +37,10 @@ const Coin = () => {
         }
         loadData()
      },[]);
-  
+
+     useEffect(()=>{
+        getLikes();
+     },[])
 
   if(info){
       
@@ -34,6 +51,7 @@ const Coin = () => {
             <h1>{info.name}</h1>
             <h1>{info.id}</h1>
             <h1>Rank: {info.coingecko_rank}</h1>
+            <button onClick={addLike}>LIIKEEE</button> {likeAmount && <p>likes: {likeAmount}</p>}
             <h1>What is {info.name} ?</h1>
             <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>
 
