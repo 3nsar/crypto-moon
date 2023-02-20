@@ -142,6 +142,16 @@ video{
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  font-family: Orbitron;
+  background-color: rgb(0,0,0, 0.50);
+}
+
+.login h1{
+  font-size: 40px;
+}
+
+.login p{
+  font-size: 25px;
 }
 
 .log-btn{
@@ -153,7 +163,17 @@ video{
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
+  margin-top: 20px;
 }
+
+.login video{
+  position: absolute;
+  z-index: -1;
+  max-height: 100vh;
+  min-width: 100%;
+ 
+  object-fit: cover;
+ }
 
 /*======== CHAT =======*/
 

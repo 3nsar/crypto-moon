@@ -17,7 +17,7 @@ const [user] = useAuthState(auth)
     <div className='App'>
   <LoginContext.Provider value={{user}}>
    <Router >
-      <Navbar />
+      {user && <Navbar />}
       <Routes>
        <Route exact path="/" element={user == null ? <Login /> : <Main />}/> 
        <Route path="/coin/:id" element={<Coin />}/> 

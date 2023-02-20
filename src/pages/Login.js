@@ -2,6 +2,7 @@ import React from 'react'
 import {auth, db, provider} from '../config/firebase'
 import {signInWithPopup} from 'firebase/auth'
 import { useNavigate } from 'react-router'
+import videobg from "../assets/tunnel-64814.mp4"
 
 const Login = () => {
 
@@ -15,7 +16,9 @@ const Login = () => {
 
   return (
     <div className='login'>
-        <h1>Sign in with Google</h1>
+      <video src={videobg} autoPlay loop muted/>
+        <h1>START YOUR JOURNEY WITH CRYPTO-MOON</h1>
+        <p>EXPLORE THE FUTURE</p>
         <button className='log-btn' onClick={signWithGoogle}>SIGN IN </button>
     </div>
   )
