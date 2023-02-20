@@ -41,18 +41,27 @@ const Chat = () => {
             {messages && messages.docs.map(msg => <ChatMessage key={msg.id} messages={msg.data()}/>)}
         </div>
         <form>
-        <img
-                className="emoji-icon"
-                src={coolPic}
-                onClick={() => setShowPicker(val => !val)} />
-                {showPicker && <Picker
-                 pickerStyle={{ width: '100%' }}
-                 emojiStyle={EmojiStyle.APPLE}
-                 onEmojiClick={(emojiObject)=> setFormValue((prevMsg)=> prevMsg + emojiObject.emoji)}
-                 />
-                }
-            <input value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
-            <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white'/></button>
+
+            <div className="chat-btn-container">
+                <div className="chat-btn-content">
+                 <img
+                    className="emoji-icon"
+                    src={coolPic}
+                    onClick={() => setShowPicker(val => !val)}
+                  />
+                  <input value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
+                  <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white'/></button>
+                </div>
+                  <div className='picker'>               
+                   {showPicker && <Picker
+                    pickerStyle={{ width: '100%' }}
+                    emojiStyle={EmojiStyle.APPLE}
+                    height={320}
+                    onEmojiClick={(emojiObject)=> setFormValue((prevMsg)=> prevMsg + emojiObject.emoji)}
+                    />
+                  }
+                </div> 
+            </div>
         </form>
     </div>
   )

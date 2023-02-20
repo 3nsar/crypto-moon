@@ -170,8 +170,7 @@ video{
   position: absolute;
   z-index: -1;
   max-height: 100vh;
-  min-width: 100%;
- 
+  max-width: 100vh;
   object-fit: cover;
  }
 
@@ -244,14 +243,16 @@ form{
   margin-top: 10px;
 }
 
+
 form input{
-  padding:12px 80px;
   font-size: 15px;
   background-color: #3e3e3e;
   color: white;
   border: none;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  height: 40px;
+  width: 300px;
 
 }
 
@@ -264,9 +265,25 @@ form button{
  padding-left: 8px;
  border-top-right-radius: 10px;
  border-bottom-right-radius: 10px;
+ height: 40px;
 }
 
 .emoji-icon{
   height: 30px;
   cursor: pointer;
+}
+
+.chat-btn-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.chat-btn-content{
+  display: flex;
+  align-items: center;
+}
+
+.picker{
+  margin-top: 10px;
 }
