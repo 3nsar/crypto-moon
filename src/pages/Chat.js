@@ -4,7 +4,7 @@ import { addDoc, collection, getDocs, limitToLast, orderBy, query, serverTimesta
 import {useCollection} from "react-firebase-hooks/firestore"
 import { LoginContext } from '../helper/LoginContext'
 import { SiRocketdotchat } from 'react-icons/si';
-import EmojiPicker from 'emoji-picker-react';
+import Picker, {EmojiClickData, EmojiStyle} from 'emoji-picker-react';
 
 const Chat = () => {
     const messagesRef = collection(db,"messages")
@@ -14,6 +14,8 @@ const Chat = () => {
     const scrollTo = useRef(null)
 
     const [formValue, setFormValue] = useState("")
+    const [showPicker, setShowPicker] = useState(false);
+
 
 
     const sendMessage = async (e) =>{
@@ -39,6 +41,16 @@ const Chat = () => {
         </div>
         <form>
             <input value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
+            <img
+                className="emoji-icon"
+                src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
+                onClick={() => setShowPicker(val => !val)} />
+                {showPicker && <Picker
+                 pickerStyle={{ width: '100%' }}
+                 emojiStyle={EmojiStyle.APPLE}
+                 onEmojiClick={(emojiObject)=> setFormValue((prevMsg)=> prevMsg + emojiObject.emoji)}
+                 />
+                }
             <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white'/></button>
         </form>
     </div>
