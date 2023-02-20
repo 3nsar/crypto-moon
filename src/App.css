@@ -245,3 +245,8 @@ form button{
  border-top-right-radius: 10px;
  border-bottom-right-radius: 10px;
 }
+
+.emoji-icon{
+  height: 30px;
+  cursor: pointer;
+}
