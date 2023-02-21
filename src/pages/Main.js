@@ -15,7 +15,7 @@ import Banner from '../components/Banner';
 
 const Main = () => {
     
-    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=40&page=1&sparkline=true";
+    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=false&price_change_percentage=7d";
     const [page, setPage] = useState(0);
     const [coins, setCoins] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -150,14 +150,14 @@ const Main = () => {
     <TableContainer component={Paper} sx={tableContainerSx}>
         <Table aria-label="simple table" stickyHeader={true}>
          <TableHead >
-              <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "800", borderBottom: "none"}}}>
+              <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "700", borderBottom: "none"}}}>
                <TableCell onClick={sortById} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>#</TableCell>
-               <TableCell onClick={()=>sorting("name")} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin {<CgArrowsExchangeAltV/>}</TableCell>
-               <TableCell onClick={sortByPrice} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Price {<CgArrowsExchangeAltV/>}</TableCell>
-               <TableCell onClick={sortBy24h} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>24h {<CgArrowsExchangeAltV />}</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>7d {<CgArrowsExchangeAltV/>}</TableCell>
-               <TableCell onClick={sortByVolume} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Volume {<CgArrowsExchangeAltV/>}</TableCell>
-               <TableCell onClick={sortByMktCap} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Mkt-Cap {<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={()=>sorting("name")} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin{<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortByPrice} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Price{<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortBy24h} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>24h{<CgArrowsExchangeAltV />}</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>7d{<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortByVolume} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Volume{<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortByMktCap} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Mkt-Cap{<CgArrowsExchangeAltV/>}</TableCell>
               </TableRow>
           </TableHead>
           
@@ -176,13 +176,16 @@ const Main = () => {
             <TableBody onClick={()=> navigate(`/coin/${coin.id}`)} key={coin.id} sx={{"tr":{backgroundColor: "grey.900", cursor:"pointer"}}} >
               <TableRow className="coin-container" >
                 <TableCell sx={{color:"white"}}>{coin.market_cap_rank}</TableCell>
-                <TableCell sx={{color:"white"}}> <div className='coin-content'> <img src={coin.image} alt="coin"/>{coin.name} </div></TableCell>
+                <TableCell sx={{color:"white"}}> <div className='coin-content'> <img src={coin.image} alt="coin"/>{coin.name}</div></TableCell>
                 <TableCell sx={{color:"white"}}>{parseFloat(coin.current_price).toLocaleString()}€</TableCell>
                 <TableCell sx={{color:"white"}}>
                 { coin.price_change_percentage_24h >= 0 ?
                   <div className='green'>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}% </div> : <div className='red'>{parseFloat(coin.price_change_percentage_24h).toFixed(2)}% </div>}
-                  </TableCell>
-                <TableCell sx={{color:"white"}}>{parseFloat(coin.price_change_percentage_1h).toFixed(2)}%</TableCell>
+                </TableCell>
+                <TableCell sx={{color:"white"}}>
+                { coin.price_change_percentage_7d_in_currency >= 0 ?
+                  <div className='green'>{parseFloat(coin.price_change_percentage_7d_in_currency).toFixed(2)}% </div> : <div className='red'>{parseFloat(coin.price_change_percentage_7d_in_currency).toFixed(2)}% </div>}
+                </TableCell>
                 <TableCell sx={{color:"white"}}>{parseFloat(coin.total_volume).toLocaleString()}€</TableCell>
                 <TableCell sx={{color:"white"}}>{parseFloat(coin.market_cap).toLocaleString()}€</TableCell>
               </TableRow>
