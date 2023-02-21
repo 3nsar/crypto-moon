@@ -31,7 +31,7 @@ body{
 }
 
 .navbar-container li{
-  margin-left: 1rem;
+  margin-right: 1rem;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -47,13 +47,12 @@ body{
   font-family: Orbitron;
 }
 
-
-
 .navbar-list{
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .navbar-list button{
   background-color: #304ffe;
   cursor: pointer;

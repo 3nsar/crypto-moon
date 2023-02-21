@@ -16,11 +16,11 @@ const Navbar = () => {
     {user && (
       <>
       <h1>CRYPTO-MOON</h1>
-      {/*<h1>{user.displayName}</h1>*/}
+
       <ul className='navbar-list'>
-        <li>CHAT</li>
-        <li >MARKET</li>
-        <li>NEWS</li>
+          <li onClick={()=>navigate('/chat')}>CHAT</li>
+          <li onClick={()=>navigate('/main')}>MARKET</li>
+          <li onClick={()=>navigate('/news')}>NEWS</li>
         <button onClick={signUserOut}>LOG OUT</button>
       </ul>
       </>

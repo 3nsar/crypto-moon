@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from './config/firebase'
 import Login from './pages/Login';
 import Chat from './pages/Chat';
+import News from './pages/News';
 
 function App() {
   
@@ -23,6 +24,7 @@ const [user] = useAuthState(auth)
        <Route path="/coin/:id" element={<Coin />}/> 
        <Route exact path="/main" element={<Main /> }/>
        <Route exact path="/chat" element={<Chat /> }/>
+       <Route exact path="/news" element={<News /> }/>
       </Routes>  
     </Router>
   </LoginContext.Provider>  
