@@ -76,12 +76,28 @@ body{
   height: 35px;
   color: white;
   font-size: 16px;
-  width: 300px;
+  width: 280px;
   border: none;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   margin-top: 20px;
   padding-left: 10px;
+  outline: none;
 }
+
+.search-icon{
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding-right: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgba(255,0,128);
+}
+
+
 /*=========== Coin-Container =====*/
 
 .coin-container{
@@ -255,6 +271,7 @@ form input{
   height: 40px;
   width: 400px;
   padding-left: 10px;
+  outline: none;
 }
 
 form button{

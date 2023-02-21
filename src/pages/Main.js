@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { useNavigate } from 'react-router'
 import { FiArrowUpCircle, FiArrowDownCircle } from 'react-icons/fi';
+import {GoSearch } from 'react-icons/go';
 import {CgArrowsExchangeAltV} from 'react-icons/cg';
 import Banner from '../components/Banner';
 
@@ -158,7 +159,10 @@ const Main = () => {
    <div>
     <Banner/>
       <div className="input-bar">
-        <input  type="text" placeholder=" SEARCH..." onChange={(e)=> setCoinSearch(e.target.value)}/>
+        <input  type="text" placeholder= " SEARCH..." onChange={(e)=> setCoinSearch(e.target.value)}/>
+        <div className='search-icon'>
+        <GoSearch/>
+        </div>
       </div>
     <TableContainer component={Paper} sx={tableContainerSx}>
         <Table aria-label="simple table" stickyHeader={true}>

@@ -30,7 +30,7 @@ ChartJS.register(
 
 const HistoryChart = () => {
   const { id } = useParams();
-  const { response } = useAxios(`coins/${id}/market_chart?vs_currency=usd&days=60`);
+  const { response } = useAxios(`coins/${id}/market_chart?vs_currency=usd&days=30`);
 
   if(!response) {
     return (
@@ -49,11 +49,12 @@ const HistoryChart = () => {
     labels: coinChartData.map(value => moment(value.x).format('MMM DD')),
     datasets: [
       {
-        fill: true,
+        fill: false,
         label: id,
         data: coinChartData.map(val => val.y),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderColor: 'rgba(48,79,254) ',
+        backgroundColor: 'rgba(48,79,254, 0.5) ',
+        pointRadius: 0,
       }
     ]
   }
