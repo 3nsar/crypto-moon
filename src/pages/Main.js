@@ -91,6 +91,19 @@ const Main = () => {
        console.log(coins)
      };
 
+     const sortBy7d = ()=>{
+      setSorted({sorted: "price_change_percentage_7d_in_currency", reversed: !sorted.reversed});
+      const coinsCopy = [...coins];
+       coinsCopy.sort((coinA, coinB)=>{
+         if(sorted.reversed){
+           return coinA.price_change_percentage_7d_in_currency - coinB.price_change_percentage_7d_in_currency
+         }
+          return coinB.price_change_percentage_7d_in_currency - coinA.price_change_percentage_7d_in_currency
+       });
+       setCoins(coinsCopy);
+       console.log(coins)
+     };
+
      const sortByVolume = ()=>{
       setSorted({sorted: "total_volume", reversed: !sorted.reversed});
       const coinsCopy = [...coins];
@@ -155,7 +168,7 @@ const Main = () => {
                <TableCell onClick={()=>sorting("name")} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Coin{<CgArrowsExchangeAltV/>}</TableCell>
                <TableCell onClick={sortByPrice} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Price{<CgArrowsExchangeAltV/>}</TableCell>
                <TableCell onClick={sortBy24h} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>24h{<CgArrowsExchangeAltV />}</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>7d{<CgArrowsExchangeAltV/>}</TableCell>
+               <TableCell onClick={sortBy7d} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>7d{<CgArrowsExchangeAltV/>}</TableCell>
                <TableCell onClick={sortByVolume} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Volume{<CgArrowsExchangeAltV/>}</TableCell>
                <TableCell onClick={sortByMktCap} sx={{backgroundColor:"#304ffe", color:"white",cursor:"pointer"}}>Mkt-Cap{<CgArrowsExchangeAltV/>}</TableCell>
               </TableRow>
