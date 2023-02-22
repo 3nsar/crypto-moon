@@ -71,9 +71,9 @@ const Coin = () => {
       marginRight: "auto",
       marginTop: 4,
       borderRadius: 2,
-      marginBottom: 1
-
+      marginBottom: 4
     }
+
 
     useEffect(()=>{
         const loadData = async ()=>{

@@ -412,7 +412,6 @@ form button{
 
 .heart-content p{
   font-weight: 700;
-  color: rgb(255, 0, 0);
   font-size: 20px;
   font-family: Orbitron;
 }
@@ -429,7 +428,12 @@ a{
 .heart-btn{
   cursor: pointer;
   font-size: 20px;
-  padding: 0.5px 7px;
+  padding: 2px 7px;
+  border: 2px solid rgba(255,0,128);
   border-radius: 8px;
-  border: none;
+  background-color: rgba(255,0,128,0.5);
+}
+
+.heart-btn:hover{
+  
 }
