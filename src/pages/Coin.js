@@ -64,14 +64,14 @@ const Coin = () => {
     const hasUserLiked = likeAmount?.find((like)=> like.userId === user?.uid)
 
     
-    const tableContainerSx = {
-      //width: "max-content",
-      maxWidth: 1150,
+
+    const tableContainerSx2 = {
+      maxWidth: 1000,
       marginLeft: "auto",
       marginRight: "auto",
-      marginTop: 5,
+      marginTop: 4,
       borderRadius: 2,
-      marginBottom: 4
+      marginBottom: 1
 
     }
 
@@ -95,15 +95,18 @@ const Coin = () => {
     return(
         
         <div className='single-coin-container'>
-          <div className="single-coin-info">
-            <div className='single-coin-info-title'>
-              <img src={info.image.large}/>
-              <h1>{info.name}</h1>
-              <h3>{info.symbol}</h3>
+          <div className="single-coin-info-content">
+           <div className="single-coin-info">
+             <div className='single-coin-info-title'>
+               <img src={info.image.large}/>
+               <h1>{info.name}</h1>
+               <h3>{info.symbol}</h3>
+               <h4>RANK: {info.coingecko_rank}</h4>
+             </div>
+              <h1>{info.market_data.current_price.eur.toLocaleString()}€</h1>
             </div>
-              <h2>RANK: {info.coingecko_rank}</h2>
-          </div>
-        <TableContainer component={Paper} sx={tableContainerSx}>
+            </div>
+        <TableContainer component={Paper} sx={tableContainerSx2}>
          <Table aria-label="simple table" stickyHeader={true}>
            <TableHead >
                <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "700", borderBottom: "none"}}}>
@@ -112,8 +115,7 @@ const Coin = () => {
                <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>24h</TableCell>
                <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>7d</TableCell>
                <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>30d</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Volume</TableCell>
-               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Mkt-Cap</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>1y</TableCell>
               </TableRow>
           </TableHead>
           <TableBody  key={info.id} sx={{"tr":{backgroundColor: "grey.900"}}} >
@@ -135,19 +137,41 @@ const Coin = () => {
                 { info.market_data.price_change_percentage_30d_in_currency.eur >= 0 ?
                   <div className='green'>{parseFloat(info.market_data.price_change_percentage_30d_in_currency.eur).toFixed(2)}% </div> : <div className='red'>{parseFloat(info.market_data.price_change_percentage_30d_in_currency.eur).toFixed(2)}% </div>}
                 </TableCell>
-
-                <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.total_volume.eur).toLocaleString()}€</TableCell>
-                <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.market_cap.eur).toLocaleString()}€</TableCell>
+                <TableCell sx={{color:"white"}}>
+                { info.market_data.price_change_percentage_1y_in_currency.eur >= 0 ?
+                  <div className='green'>{parseFloat(info.market_data.price_change_percentage_1y_in_currency.eur).toFixed(2)}% </div> : <div className='red'>{parseFloat(info.market_data.price_change_percentage_1y_in_currency.eur).toFixed(2)}% </div>}
+                </TableCell>
               </TableRow>
             </TableBody> 
             </Table>
             </TableContainer>
-            <button onClick={hasUserLiked ? removeLike : addLike}> {hasUserLiked ? "DISLIKE" :"LIIKEEE"}</button> {likeAmount && <p>likes: {likeAmount.length}</p>}
-            <h1>What is {info.name} ?</h1>
-            <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>
 
-            <HistoryChart /> 
-            
+            <TableContainer component={Paper} sx={tableContainerSx2}>
+         <Table aria-label="simple table" stickyHeader={true}>
+           <TableHead >
+               <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "700", borderBottom: "none"}}}>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>24 Low</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>24 High</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Volume</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Mkt-Cap</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Total Supply</TableCell>
+               </TableRow>
+          </TableHead>
+          <TableBody  key={info.id} sx={{"tr":{backgroundColor: "grey.900"}}} >
+              <TableRow className="coin-container" >
+              <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.high_24h.eur).toLocaleString()}€</TableCell>
+              <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.low_24h.eur).toLocaleString()}€</TableCell>
+              <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.total_volume.eur).toLocaleString()}€</TableCell>
+                <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.market_cap.eur).toLocaleString()}€</TableCell>
+                <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.total_supply).toLocaleString()}</TableCell>
+              </TableRow>
+            </TableBody> 
+            </Table>
+            </TableContainer>
+              <button onClick={hasUserLiked ? removeLike : addLike}> {hasUserLiked ? "DISLIKE" :"LIIKEEE"}</button> {likeAmount && <p>likes: {likeAmount.length}</p>}
+              <h1>What is {info.name} ?</h1>
+              <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>
+              <HistoryChart />      
         </div>
     ) 
 }

@@ -315,13 +315,15 @@ form button{
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background-color: #1C1C1C;
   border-radius: 20px;
   padding: 5px 10px;
   margin-top: 20px;
-
+  border: 3px solid #304ffe;
+  max-width: 600px;
 }
+
+
 .single-coin-info h2{
   margin-right: 10px;
 }
@@ -348,10 +350,16 @@ form button{
   padding: 5px;
 }
 
-.single-coin-info h2{
-  font-size: 20px;
+.single-coin-info h4{
+  font-size: 15px;
   background-color: #304ffe;
   padding: 5px 18px;
   border-radius: 20px;
   margin-left: 30px;
+}
+
+.single-coin-info-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
