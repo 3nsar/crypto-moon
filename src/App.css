@@ -307,7 +307,10 @@ form button{
 }
 
 .single-coin-container{
-  border: 2px solid #00ff00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   
 }
 
@@ -320,7 +323,7 @@ form button{
   padding: 5px 10px;
   margin-top: 20px;
   border: 3px solid #304ffe;
-  max-width: 600px;
+  width: 600px;
 }
 
 
@@ -351,15 +354,42 @@ form button{
 }
 
 .single-coin-info h4{
-  font-size: 15px;
-  background-color: #304ffe;
-  padding: 5px 18px;
+  font-size: 10px;
+  background-color: rgba(255,0,128);
+  padding: 2px 10px;
   border-radius: 20px;
-  margin-left: 30px;
+  margin-left: 10px;
+  font-weight: 900;
+  
 }
 
 .single-coin-info-content{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.about-coin-container{
+  background-color: #1C1C1C;
+  border: 3px solid #304ffe;
+  padding: 3px 2px;
+  border-radius: 20px;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+.about-coin-container h1{
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.about-coin-container p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+a{
+  color: #304ffe;
+  text-decoration: none;
 }

@@ -93,7 +93,7 @@ const Coin = () => {
   if(info){
       
     return(
-        
+       <>
         <div className='single-coin-container'>
           <div className="single-coin-info-content">
            <div className="single-coin-info">
@@ -169,10 +169,13 @@ const Coin = () => {
             </Table>
             </TableContainer>
               <button onClick={hasUserLiked ? removeLike : addLike}> {hasUserLiked ? "DISLIKE" :"LIIKEEE"}</button> {likeAmount && <p>likes: {likeAmount.length}</p>}
-              <h1>What is {info.name} ?</h1>
-              <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>
-              <HistoryChart />      
+              <div className='about-coin-container'>
+                  <h1>What is {info.name} ?</h1>
+                  <p dangerouslySetInnerHTML={{__html: info.description.en}}></p>
+              </div>                 
         </div>
+        <HistoryChart />   
+        </> 
     ) 
 }
 }
