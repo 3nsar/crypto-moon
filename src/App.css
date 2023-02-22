@@ -306,6 +306,14 @@ form button{
   margin-top: 10px;
 }
 
+/*================ SINGLE COIN PAGE==========*/
+.single-coin-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .single-coin-container{
   display: flex;
   align-items: center;
@@ -380,6 +388,7 @@ form button{
 .about-coin-container h1{
   margin-left: 5px;
   margin-top: 10px;
+  
 }
 
 .about-coin-container p{
@@ -392,4 +401,8 @@ form button{
 a{
   color: #304ffe;
   text-decoration: none;
+}
+
+.chart-container{
+  width: 1000px;
 }

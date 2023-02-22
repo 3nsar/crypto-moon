@@ -93,7 +93,7 @@ const Coin = () => {
   if(info){
       
     return(
-       <>
+      <div className='single-coin-page'>
         <div className='single-coin-container'>
           <div className="single-coin-info-content">
            <div className="single-coin-info">
@@ -172,10 +172,12 @@ const Coin = () => {
               <div className='about-coin-container'>
                   <h1>What is {info.name} ?</h1>
                   <p dangerouslySetInnerHTML={{__html: info.description.en}}></p>
-              </div>                 
+              </div>               
+      </div>
+        <div className='chart-container'>
+          <HistoryChart />
         </div>
-        <HistoryChart />   
-        </> 
+      </div>
     ) 
 }
 }
