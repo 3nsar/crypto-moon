@@ -6,6 +6,13 @@ import { addDoc, collection, deleteDoc, getDocs, query, where,doc } from 'fireba
 import { db,auth } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { LoginContext } from '../helper/LoginContext'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell , { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 const Coin = () => {
 
@@ -56,6 +63,18 @@ const Coin = () => {
 
     const hasUserLiked = likeAmount?.find((like)=> like.userId === user?.uid)
 
+    
+    const tableContainerSx = {
+      //width: "max-content",
+      maxWidth: 1150,
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: 5,
+      borderRadius: 2,
+      marginBottom: 4
+
+    }
+
     useEffect(()=>{
         const loadData = async ()=>{
             setLoading(true)
@@ -75,11 +94,54 @@ const Coin = () => {
       
     return(
         
-        <div>
-            <img src={info.image.large}/>
-            <h1>{info.name}</h1>
-            <h1>{info.id}</h1>
-            <h1>Rank: {info.coingecko_rank}</h1>
+        <div className='single-coin-container'>
+          <div className="single-coin-info">
+            <div className='single-coin-info-title'>
+              <img src={info.image.large}/>
+              <h1>{info.name}</h1>
+              <h3>{info.symbol}</h3>
+            </div>
+              <h2>RANK: {info.coingecko_rank}</h2>
+          </div>
+        <TableContainer component={Paper} sx={tableContainerSx}>
+         <Table aria-label="simple table" stickyHeader={true}>
+           <TableHead >
+               <TableRow sx={{"& th": {fontSize: "1rem", fontWeight: "700", borderBottom: "none"}}}>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Price</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>1h</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>24h</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>7d</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>30d</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Volume</TableCell>
+               <TableCell sx={{backgroundColor:"#304ffe", color:"white"}}>Mkt-Cap</TableCell>
+              </TableRow>
+          </TableHead>
+          <TableBody  key={info.id} sx={{"tr":{backgroundColor: "grey.900"}}} >
+              <TableRow className="coin-container" >
+                <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.current_price.eur).toLocaleString()}€</TableCell>
+                <TableCell sx={{color:"white"}}>
+                { info.market_data.price_change_percentage_1h_in_currency.eur >= 0 ?
+                  <div className='green'>{parseFloat(info.market_data.price_change_percentage_1h_in_currency.eur).toFixed(2)}% </div> : <div className='red'>{parseFloat(info.market_data.price_change_percentage_1h_in_currency.eur ).toFixed(2)}% </div>}
+                </TableCell>
+                <TableCell sx={{color:"white"}}>
+                { info.market_data.price_change_percentage_24h_in_currency.eur >= 0 ?
+                  <div className='green'>{parseFloat(info.market_data.price_change_percentage_24h_in_currency.eur).toFixed(2)}% </div> : <div className='red'>{parseFloat(info.market_data.price_change_percentage_24h_in_currency.eur ).toFixed(2)}% </div>}
+                </TableCell>
+                <TableCell sx={{color:"white"}}>
+                { info.market_data.price_change_percentage_7d_in_currency.eur >= 0 ?
+                  <div className='green'>{parseFloat(info.market_data.price_change_percentage_7d_in_currency.eur).toFixed(2)}% </div> : <div className='red'>{parseFloat(info.market_data.price_change_percentage_7d_in_currency.eur).toFixed(2)}% </div>}
+                </TableCell>
+                <TableCell sx={{color:"white"}}>
+                { info.market_data.price_change_percentage_30d_in_currency.eur >= 0 ?
+                  <div className='green'>{parseFloat(info.market_data.price_change_percentage_30d_in_currency.eur).toFixed(2)}% </div> : <div className='red'>{parseFloat(info.market_data.price_change_percentage_30d_in_currency.eur).toFixed(2)}% </div>}
+                </TableCell>
+
+                <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.total_volume.eur).toLocaleString()}€</TableCell>
+                <TableCell sx={{color:"white"}}>{parseFloat(info.market_data.market_cap.eur).toLocaleString()}€</TableCell>
+              </TableRow>
+            </TableBody> 
+            </Table>
+            </TableContainer>
             <button onClick={hasUserLiked ? removeLike : addLike}> {hasUserLiked ? "DISLIKE" :"LIIKEEE"}</button> {likeAmount && <p>likes: {likeAmount.length}</p>}
             <h1>What is {info.name} ?</h1>
             <div className='' dangerouslySetInnerHTML={{__html: info.description.en}}></div>

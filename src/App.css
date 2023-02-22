@@ -159,7 +159,7 @@ video{
   justify-content: center;
   height: 100vh;
   font-family: Orbitron;
-  background-color: rgb(0,0,0, 0.50);
+  background-color: rgb(0,0,0, 0.70);
 }
 
 .login h1{
@@ -175,10 +175,9 @@ video{
   padding: 10px 20px 10px 20px;
   background-color: rgba(255,0,128);
   color: white;
-  font-family: Orbitron;
   border: none;
   border-radius: 10px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 20px;
 }
@@ -305,4 +304,54 @@ form button{
 
 .picker{
   margin-top: 10px;
+}
+
+.single-coin-container{
+  border: 2px solid #00ff00;
+  
+}
+
+.single-coin-info{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #1C1C1C;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-top: 20px;
+
+}
+.single-coin-info h2{
+  margin-right: 10px;
+}
+
+.single-coin-info img{
+  height: 50px;
+}
+
+.single-coin-info-title{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.single-coin-info-title h1{
+  margin-left: 10px;
+}
+
+.single-coin-info-title h3{
+  font-size: 15px;
+  margin-left: 10px;
+  background-color: gray;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.single-coin-info h2{
+  font-size: 20px;
+  background-color: #304ffe;
+  padding: 5px 18px;
+  border-radius: 20px;
+  margin-left: 30px;
 }
