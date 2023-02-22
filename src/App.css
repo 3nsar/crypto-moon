@@ -382,20 +382,39 @@ form button{
   border: 3px solid #304ffe;
   padding: 3px 2px;
   border-radius: 20px;
-  max-width: 1200px;
+  max-width: 1000px;
   margin-bottom: 20px;
 }
 .about-coin-container h1{
-  margin-left: 5px;
+  margin-left: 10px;
   margin-top: 10px;
-  
 }
 
 .about-coin-container p{
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.heart-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.heart-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-content p{
+  font-weight: 700;
+  color: rgb(255, 0, 0);
+  font-size: 20px;
+  font-family: Orbitron;
 }
 
 a{
@@ -405,4 +424,12 @@ a{
 
 .chart-container{
   width: 1000px;
+}
+
+.heart-btn{
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0.5px 7px;
+  border-radius: 8px;
+  border: none;
 }

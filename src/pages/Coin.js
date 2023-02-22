@@ -168,10 +168,15 @@ const Coin = () => {
             </TableBody> 
             </Table>
             </TableContainer>
-              <button onClick={hasUserLiked ? removeLike : addLike}> {hasUserLiked ? "DISLIKE" :"LIIKEEE"}</button> {likeAmount && <p>likes: {likeAmount.length}</p>}
               <div className='about-coin-container'>
                   <h1>What is {info.name} ?</h1>
                   <p dangerouslySetInnerHTML={{__html: info.description.en}}></p>
+                  <div className='heart-container'>
+                    <div className='heart-content'>
+                      <button className='heart-btn' onClick={hasUserLiked ? removeLike : addLike}> {hasUserLiked ? <>&#x1F494;</> : <>&#x1F496;</>}</button> 
+                      {likeAmount && <p>{likeAmount.length}</p>}
+                    </div>
+                  </div>
               </div>               
       </div>
         <div className='chart-container'>
