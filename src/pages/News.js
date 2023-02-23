@@ -6,16 +6,30 @@ const News = () => {
   const [news, setNews] = useState([])
 
   useEffect(()=>{
-    const loadingCoins = async ()=>{
+    const loadingNews = async ()=>{
       const response = await axios.get(url)
       console.log(response.data)
-      setNews(response.data)
+      setNews(response.data.articles)
     }
-    loadingCoins()
+    loadingNews()
   },[])
 
   return (
-    <div>News</div>
+    <div>
+      {news.map((item)=>{
+        return(
+          <div className='news-container'>
+            <div className='news-content'>
+              <img src={item.urlToImage} alt="pic" height={200} />
+              <h1>{item.title}</h1>
+              <p>{item.description}</p>
+              {/*<button>{item.url}</button> */}
+              <button>READ MORE</button>
+            </div>
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
