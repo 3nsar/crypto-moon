@@ -13,6 +13,8 @@ import { FiArrowUpCircle, FiArrowDownCircle } from 'react-icons/fi';
 import {GoSearch } from 'react-icons/go';
 import {CgArrowsExchangeAltV} from 'react-icons/cg';
 import Banner from '../components/Banner';
+import { Dna } from  'react-loader-spinner'
+
 
 const Main = () => {
     
@@ -24,7 +26,7 @@ const Main = () => {
     const [coinSearch,setCoinSearch] = useState("")
     const [order, setOrder] = useState("ASC")
     const [sorted, setSorted] = useState({sorted: "market_cap_rank", reversed: false})
-
+    const [loading, setLoading] = useState(true)
 
     const sorting = (val)=>{
       if(order ==="ASC"){
@@ -63,6 +65,7 @@ const Main = () => {
         setCoins(response.data)
       }
       loadingCoins()
+      setLoading(false)
     },[])
 
     
@@ -156,6 +159,18 @@ const Main = () => {
     }
 
   return (
+    <>
+    {loading ? 
+    <div className='loading-spinner'>
+      <Dna
+        visible={true}
+        height="120"
+        width="120"
+        ariaLabel="dna-loading"
+        wrapperStyle={{}}
+        wrapperClass="dna-wrapper"
+      /> 
+      </div>:
    <div>
     <Banner/>
       <div className="input-bar">
@@ -209,6 +224,7 @@ const Main = () => {
             </TableBody>  
               ))}
         </Table>
+  
         <TablePagination
           sx={{backgroundColor: "grey.900", color:"white"}}
           rowsPerPageOptions={[10, 15, 25]}
@@ -222,8 +238,10 @@ const Main = () => {
         />
  
       </TableContainer>
-    </div>
       
+    </div>
+    }
+  </>
   )
 }
 

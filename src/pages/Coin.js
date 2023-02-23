@@ -15,14 +15,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import { Dna } from  'react-loader-spinner'
 
 const Coin = () => {
 
     const {user} = useContext(LoginContext)
     const [info, setInfo] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const { id } = useParams()
 
     const [likeAmount, setLikeAmount] = useState([])
@@ -92,13 +91,12 @@ const Coin = () => {
 
     useEffect(()=>{
         const loadData = async ()=>{
-            setLoading(true)
            const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
            console.log(response.data) 
            setInfo(response.data);
-           setLoading(false)
         }
         loadData()
+        setLoading(false)
      },[]);
 
      useEffect(()=>{
@@ -107,7 +105,6 @@ const Coin = () => {
 
 
   if(info){
-      
     return(
       <div className='single-coin-page'>
         <div className='single-coin-container'>
@@ -201,7 +198,7 @@ const Coin = () => {
         </div>
       </div>
     ) 
-}
+ }
 }
 
 export default Coin

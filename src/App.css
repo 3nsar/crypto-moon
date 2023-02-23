@@ -423,6 +423,7 @@ a{
 
 .chart-container{
   width: 1000px;
+  margin-bottom: 10px;
 }
 
 .heart-btn{
@@ -437,5 +438,13 @@ a{
 .heart-btn:hover{
   background-color: rgba(255,0,128,0.4);
   transition: all 0.4s;
-  
+}
+
+/*============= LOADING ========*/
+
+.loading-spinner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
