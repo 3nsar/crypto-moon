@@ -13,6 +13,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const Coin = () => {
 
@@ -24,7 +28,17 @@ const Coin = () => {
     const [likeAmount, setLikeAmount] = useState([])
     const likesRef = collection(db, "likes");
     const likesDoc = query(likesRef, where("coinId", "==", id))
-    
+
+    const notify = () => toast.success('LIKE WAS COMPLETED!', {
+      position:"bottom-left",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
 
     const addLike = async () =>{
         try{
@@ -32,6 +46,7 @@ const Coin = () => {
         if(user){
             setLikeAmount((prev)=>
             prev ? [...prev, {userId: user.uid, likeId: newDoc.id}] : [{userId: user.uid,  likeId: newDoc.id}])
+            notify();
         };
       } catch(err){
         console.log(err)
@@ -90,6 +105,7 @@ const Coin = () => {
         getLikes();
      },[])
 
+
   if(info){
       
     return(
@@ -101,7 +117,7 @@ const Coin = () => {
                <img src={info.image.large}/>
                <h1>{info.name}</h1>
                <h3>{info.symbol}</h3>
-               <h4>RANK: {info.coingecko_rank}</h4>
+               <h4>RANK: {info.market_cap_rank}</h4>
              </div>
               <h1>{info.market_data.current_price.eur.toLocaleString()}€</h1>
             </div>
@@ -177,7 +193,8 @@ const Coin = () => {
                       {likeAmount && <p>{likeAmount.length}</p>}
                     </div>
                   </div>
-              </div>               
+              </div>   
+              <ToastContainer />            
       </div>
         <div className='chart-container'>
           <HistoryChart />

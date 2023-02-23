@@ -435,5 +435,7 @@ a{
 }
 
 .heart-btn:hover{
+  background-color: rgba(255,0,128,0.4);
+  transition: all 0.4s;
   
 }
