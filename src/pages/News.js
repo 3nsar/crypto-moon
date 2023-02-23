@@ -20,11 +20,11 @@ const News = () => {
         return(
           <div className='news-container'>
             <div className='news-content'>
-              <img src={item.urlToImage} alt="pic" height={200} />
-              <h1>{item.title}</h1>
-              <p>{item.description}</p>
-              {/*<button>{item.url}</button> */}
-              <button>READ MORE</button>
+              <img src={item.urlToImage} alt="pic" />
+               <div className='news-info'>
+                 <h1>{item.title.length > 20 ? item.title.slice(0,35)+"..." : item.title}</h1>
+                   <p>{item.description}</p>
+               </div>
             </div>
           </div>
         )
