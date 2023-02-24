@@ -460,7 +460,7 @@ a{
 
 .news-content{
   display: flex;
-  max-width: 900px;
+  max-width: 700px;
   margin-top: 20px;
   border-radius: 20px;
   border: 2px solid rgb(212, 0, 255);
@@ -468,8 +468,8 @@ a{
 }
 
 .news-content img{
-  height: 220px;
-  min-width: 370px;
+  height: 160px;
+  min-width: 230px;
   border-top-left-radius: 18px;
   border-bottom-left-radius: 18px;
 }
@@ -483,13 +483,16 @@ a{
 }
 
 .news-info h1{
-  margin-top: 10px;
-  font-size: 20px;
+  text-align: center;
+  font-size: 25px;
   font-weight: 800;
+  border-bottom: 2px solid rgb(212, 0, 255);
+  padding-bottom: 5px;
+  width: 100%;
 }
 
-.skr{
-  display: flex;
-  flex-direction:  column;
+.news-info p{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 

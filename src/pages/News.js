@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 const News = () => {
-  const url = 'https://saurav.tech/NewsAPI/top-headlines/category/health/in.json';
+  const url = 'https://saurav.tech/NewsAPI/top-headlines/category/technology/in.json';
+
   const [news, setNews] = useState([])
 
   useEffect(()=>{
@@ -14,6 +15,7 @@ const News = () => {
     loadingNews()
   },[])
 
+  
   return (
     <div>
       {news.map((item)=>{
@@ -22,8 +24,8 @@ const News = () => {
             <div className='news-content'>
               <img src={item.urlToImage} alt="pic" />
                <div className='news-info'>
-                 <h1>{item.title.length > 20 ? item.title.slice(0,35)+"..." : item.title}</h1>
-                   <p>{item.description}</p>
+                   <h1>{item.title.length > 35 ? item.title.slice(0,35)+"..." : item.title}</h1>
+                   <p>{item.description.length > 90 ? item.description.slice(0,90) +"..." : item.description}</p>
                </div>
             </div>
           </div>
