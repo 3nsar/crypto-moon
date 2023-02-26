@@ -467,6 +467,11 @@ a{
   background-color:rgba(212, 0, 255,0.4);
 }
 
+.news-content:hover{
+  background-color:rgba(212, 0, 255,0.3);
+  transition: all 0.4s;
+}
+
 .news-content img{
   height: 160px;
   width: 230px;
@@ -496,3 +501,6 @@ a{
   margin-bottom: 10px;
 }
 
+a{
+  color: white;
+}

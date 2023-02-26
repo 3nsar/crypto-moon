@@ -21,7 +21,7 @@ const News = () => {
     <div>
       {news.map((item)=>{
         return(
-          <a href={item.url}>
+          <a href={item.url} target="_blank">
           <div className='news-container'>
             <div className='news-content'>
               <img src={item.urlToImage} alt="pic" />

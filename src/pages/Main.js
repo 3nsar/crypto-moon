@@ -18,7 +18,7 @@ import { Dna } from  'react-loader-spinner'
 
 const Main = () => {
     
-    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=false&price_change_percentage=7d";
+    const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=7d";
     const [page, setPage] = useState(0);
     const [coins, setCoins] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -27,6 +27,9 @@ const Main = () => {
     const [order, setOrder] = useState("ASC")
     const [sorted, setSorted] = useState({sorted: "market_cap_rank", reversed: false})
     const [loading, setLoading] = useState(true)
+
+    const [filteredCoins, setFilteredCoins] = useState([]);
+
 
     const sorting = (val)=>{
       if(order ==="ASC"){
@@ -147,6 +150,29 @@ const Main = () => {
        console.log(coins)
      };
 
+     const handleSearchChange = (event) => {
+      const searchQuery = event.target.value.toLowerCase();
+      setCoinSearch(searchQuery);
+      if (searchQuery !== "") {
+        setFilteredCoins(
+          coins.filter(
+            (coin) =>
+              coin.name.toLowerCase().includes(searchQuery) ||
+              searchQuery === ""
+          )
+        );
+      } else {
+        setFilteredCoins(coins);
+      }
+      setPage(0);
+    };
+
+    useEffect(() => {
+      setFilteredCoins(coins);
+    }, [coins]);
+    
+    
+
     const tableContainerSx = {
       //width: "max-content",
       maxWidth: 1150,
@@ -174,7 +200,7 @@ const Main = () => {
    <div>
     <Banner/>
       <div className="input-bar">
-        <input  type="text" placeholder= " SEARCH..." onChange={(e)=> setCoinSearch(e.target.value)}/>
+        <input  type="text" placeholder= " SEARCH..." onChange={handleSearchChange}/>
         <div className='search-icon'>
         <GoSearch/>
         </div>
@@ -194,17 +220,15 @@ const Main = () => {
           </TableHead>
           
           {( rowsPerPage > 0
-              ? coins.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              : coins
+              ? filteredCoins.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : filteredCoins
               ).filter((val)=>{
                 if(coinSearch ===""){
                     return val
                 }else if (val.name.toLowerCase().includes(coinSearch.toLowerCase())){
                     return val
                 }
-
-          })
-            .map((coin)=>(
+          }).map((coin)=>(
             <TableBody onClick={()=> navigate(`/coin/${coin.id}`)} key={coin.id} sx={{"tr":{backgroundColor: "grey.900", cursor:"pointer"}}} >
               <TableRow className="coin-container" >
                 <TableCell sx={{color:"white"}}>{coin.market_cap_rank}</TableCell>
