@@ -6,6 +6,7 @@ import { LoginContext } from '../helper/LoginContext'
 import { SiRocketdotchat } from 'react-icons/si';
 import coolPic from "../assets/happy.png"
 import Picker, {EmojiClickData, EmojiStyle} from 'emoji-picker-react';
+import ChatMessage from './ChatMessage';
 
 const Chat = () => {
     const messagesRef = collection(db,"messages")
@@ -34,55 +35,37 @@ const Chat = () => {
         scrollTo.current.scrollIntoView({behavior:"smooth"})
     })
 
-  return (
-    <div className='messages-content'>
-        <div className="messages">
-            <div ref={scrollTo}></div>
-            {messages && messages.docs.map(msg => <ChatMessage key={msg.id} messages={msg.data()}/>)}
-        </div>
-        <form>
-
-            <div className="chat-btn-container">
-                <div className="chat-btn-content">
-                 <img
-                    className="emoji-icon"
-                    src={coolPic}
-                    onClick={() => setShowPicker(val => !val)}
-                  />
-                  <input placeholder=" Write here..." value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
-                  <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white'/></button>
-                </div>
-                  <div className='picker'>               
-                   {showPicker && <Picker
-                    pickerStyle={{ width: '100%' }}
-                    emojiStyle={EmojiStyle.APPLE}
-                    height={320}
-                    onEmojiClick={(emojiObject)=> setFormValue((prevMsg)=> prevMsg + emojiObject.emoji)}
-                    />
-                  }
-                </div> 
+    return (
+        <div className='messages-content'>
+            <div className="messages">
+                <div ref={scrollTo}></div>
+                {messages && messages.docs.map(msg => <ChatMessage key={msg.id} messages={msg.data()}/>)}
             </div>
-        </form>
-    </div>
-  )
-}
-
-function ChatMessage(props){
-    const {user} = useContext(LoginContext)
-    if(!user) return
-
-    const {text, uid, photoURL} = props.messages
-
-    const className = uid === user.uid ? "sent" : "recieved"
-
-    return(
-        <div className={className}>
-            <img src={photoURL} alt="pic" />
-            <p>{text}</p>
+            <form>
+    
+                <div className="chat-btn-container">
+                    <div className="chat-btn-content">
+                     <img
+                        className="emoji-icon"
+                        src={coolPic}
+                        onClick={() => setShowPicker(val => !val)}
+                      />
+                      <input placeholder=" Write here..." value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
+                      <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white'/></button>
+                    </div>
+                      <div className='picker'>               
+                       {showPicker && <Picker
+                        pickerStyle={{ width: '100%' }}
+                        emojiStyle={EmojiStyle.APPLE}
+                        height={320}
+                        onEmojiClick={(emojiObject)=> setFormValue((prevMsg)=> prevMsg + emojiObject.emoji)}
+                        />
+                      }
+                    </div> 
+                </div>
+            </form>
         </div>
     )
 }
-
-
 
 export default Chat
