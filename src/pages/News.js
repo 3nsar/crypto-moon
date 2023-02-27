@@ -1,11 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
+import { Dna, Triangle } from  'react-loader-spinner'
+
+
 
 const News = () => {
   const url = 'https://saurav.tech/NewsAPI/top-headlines/category/technology/in.json';
 
   const [news, setNews] = useState([])
+  const [loading, setLoading] = useState(true)
+
 
   useEffect(()=>{
     const loadingNews = async ()=>{
@@ -14,7 +19,23 @@ const News = () => {
       setNews(response.data.articles)
     }
     loadingNews()
+    setLoading(false)
   },[])
+
+  if (loading) {
+    return(
+    <div className='loading-spinner'>
+    <Dna
+      visible={true}
+      height="120"
+      width="120"
+      ariaLabel="dna-loading"
+      wrapperStyle={{}}
+      wrapperClass="dna-wrapper"
+    /> 
+    </div> 
+    )
+  }
 
   
   return (

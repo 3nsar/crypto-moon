@@ -401,6 +401,10 @@ form button{
   margin-right: 10px;
 }
 
+.about-coin-container a{
+  color: blue;
+}
+
 .heart-container{
   display: flex;
   align-items: center;
@@ -507,5 +511,5 @@ a{
 }
 
 a{
-  color: blue;
+  color: white;
 }
