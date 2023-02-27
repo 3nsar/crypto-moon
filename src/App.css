@@ -12,6 +12,8 @@ body{
   color: white;
 }
 
+/*====== NAVBAR ========*/
+
 .navbar-container{
   display: flex;
   justify-content: space-between;
@@ -45,6 +47,7 @@ body{
 
 .navbar-container h1{
   font-family: Orbitron;
+  cursor: pointer;
 }
 
 .navbar-list{
@@ -384,6 +387,7 @@ form button{
   border-radius: 20px;
   max-width: 1000px;
   margin-bottom: 20px;
+  margin-top: 32px;
 }
 .about-coin-container h1{
   margin-left: 10px;
@@ -449,6 +453,7 @@ a{
   height: 100vh;
 }
 
+
 /*========= NEWS =====*/
 
 .news-container{
@@ -502,5 +507,5 @@ a{
 }
 
 a{
-  color: white;
+  color: blue;
 }

@@ -15,7 +15,8 @@ const Navbar = () => {
   <div className='navbar-container'>
     {user && (
       <>
-      <h1>CRYPTO-MOON</h1>
+
+      <h1 onClick={()=>navigate('/main')}>CRYPTO-MOON</h1>
 
       <ul className='navbar-list'>
           <li onClick={()=>navigate('/chat')}>CHAT</li>

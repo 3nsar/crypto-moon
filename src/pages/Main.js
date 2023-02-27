@@ -13,7 +13,7 @@ import { FiArrowUpCircle, FiArrowDownCircle } from 'react-icons/fi';
 import {GoSearch } from 'react-icons/go';
 import {CgArrowsExchangeAltV} from 'react-icons/cg';
 import Banner from '../components/Banner';
-import { Dna } from  'react-loader-spinner'
+import { Dna, Triangle } from  'react-loader-spinner'
 
 
 const Main = () => {

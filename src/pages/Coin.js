@@ -73,6 +73,7 @@ const Coin = () => {
     const getLikes = async ()=> {
         const data = await getDocs(likesDoc);
         setLikeAmount(data.docs.map((doc)=> ({ userId: doc.data().userId, likeId: doc.id})));
+        setLoading(false);
     }
 
     const hasUserLiked = likeAmount?.find((like)=> like.userId === user?.uid)
@@ -85,7 +86,6 @@ const Coin = () => {
       marginRight: "auto",
       marginTop: 4,
       borderRadius: 2,
-      marginBottom: 4
     }
 
 
@@ -103,9 +103,30 @@ const Coin = () => {
         getLikes();
      },[])
 
+     const spinner = (
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+          <Dna type="ThreeDots" color="#00BFFF" height={80} width={80} />
+      </div>
+  );
+
+  if (loading) {
+    return(
+    <div className='loading-spinner'>
+    <Dna
+      visible={true}
+      height="120"
+      width="120"
+      ariaLabel="dna-loading"
+      wrapperStyle={{}}
+      wrapperClass="dna-wrapper"
+    /> 
+    </div> 
+    )
+  }
+
 
   if(info){
-    return(
+    return (
       <div className='single-coin-page'>
         <div className='single-coin-container'>
           <div className="single-coin-info-content">
