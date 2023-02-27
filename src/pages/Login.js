@@ -8,6 +8,7 @@ const Login = () => {
 
     const navigate = useNavigate()
 
+
     const signWithGoogle = async () =>{
         const res = await signInWithPopup(auth, provider)
         console.log(res)

@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { chartDays } from "../config/data"
 import useAxios from "../hooks/useAxios"
 import {
   Chart as ChartJS,
