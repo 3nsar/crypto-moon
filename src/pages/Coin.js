@@ -1,7 +1,7 @@
 import React, { useEffect, useState,useContext  } from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import HistoryChart from './HistoryChart';
+import HistoryChart from '../components/HistoryChart';
 import { addDoc, collection, deleteDoc, getDocs, query, where,doc } from 'firebase/firestore';
 import { db,auth } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth'

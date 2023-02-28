@@ -6,7 +6,7 @@ import { LoginContext } from '../helper/LoginContext'
 import { SiRocketdotchat } from 'react-icons/si';
 import coolPic from "../assets/happy.png"
 import Picker, {EmojiClickData, EmojiStyle} from 'emoji-picker-react';
-import ChatMessage from './ChatMessage';
+import ChatMessage from '../components/ChatMessage';
 
 const Chat = () => {
     const messagesRef = collection(db,"messages")

@@ -29,7 +29,6 @@ body{
 
 .navbar-container ul{
   list-style: none;
-  
 }
 
 .navbar-container li{
@@ -65,6 +64,7 @@ body{
   font-weight: 600;
   color: white;
 }
+
 
 /*============ SEARCHBAR ========*/
 
