@@ -14,7 +14,7 @@ body{
 
 /*====== NAVBAR ========*/
 
-.navbar-container {
+.navbar-container{
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
@@ -22,42 +22,41 @@ body{
   padding: 1rem;
   background-color: rgb(42, 41, 41);
   border-bottom: 2px solid transparent;
-  border-image: linear-gradient(
-    0.25turn,
-    #304ffe,
-    rgba(255, 0, 128),
-    rgba(56, 2, 155, 0)
-  );
+  border-image: linear-gradient(0.25turn, #304ffe, rgba(255,0,128), rgba(56,2,155,0));
   border-image-slice: 1;
-  width: 100%;
+  width:100%;
 }
 
-.navbar-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.navbar-container ul{
   list-style: none;
-  flex-direction: row-reverse; /* new property */
+  
 }
 
-.navbar-list li {
-  margin-left: 1rem; /* changed from margin-right to margin-left */
+.navbar-container li{
+  margin-right: 1rem;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
 }
 
-.navbar-list li:hover {
-  color: rgba(255, 0, 128);
+.navbar-container li:hover{
+  color: rgba(255,0,128);
   transition: all 0.8s;
+
 }
 
-.navbar-container h1 {
+.navbar-container h1{
   font-family: Orbitron;
   cursor: pointer;
 }
 
-.navbar-list button {
+.navbar-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-list button{
   background-color: #304ffe;
   cursor: pointer;
   border: none;
@@ -72,30 +71,31 @@ body{
   cursor: pointer;
 }
 
-.nav-line {
-  width: 30px;
-  height: 3px;
-  margin: 5px 0 5px 10px; /* changed from margin: 5px to margin: 5px 0 5px 10px */
-  background-color: white;
-  transition: all 0.2s ease-in-out;
-}
-
-.nav-line-open {
-  transform: rotate(45deg);
-}
-
 .show {
-  display: flex !important;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   position: absolute;
   top: 70px;
   left: 0;
   width: 100%;
-  background-color: #2a2929;
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 }
 
-@media screen and (max-width: 600px) {
+.show li{
+  margin-top: 10px;
+  
+}
+
+@media (min-width: 670px){
+  .show{
+    display: none;
+  }
+}
+
+@media (max-width: 670px) {
   .navbar-container {
     padding: 0.5rem;
   }
@@ -111,13 +111,30 @@ body{
 
   .navbar-list {
     display: none;
+    text-align: center;
   }
 
   .show {
-    top: 50px;
+    top: 58px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-list button{
+    background-color: #304ffe;
+    cursor: pointer;
+    border: none;
+    padding: 1px 3px 1px 3px;
+    border-radius: 0;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
   }
 }
-
 
 /*============ SEARCHBAR ========*/
 
