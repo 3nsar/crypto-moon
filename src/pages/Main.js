@@ -175,13 +175,13 @@ const Main = () => {
 
     const tableContainerSx = {
       //width: "max-content",
+      backgroundColor: "grey.900",
       maxWidth: 1150,
       marginLeft: "auto",
       marginRight: "auto",
       marginTop: 5,
       borderRadius: 2,
       marginBottom: 4
-
     }
 
   return (

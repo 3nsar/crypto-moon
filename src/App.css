@@ -89,11 +89,6 @@ body{
   
 }
 
-@media (min-width: 670px){
-  .show{
-    display: none;
-  }
-}
 
 @media (max-width: 670px) {
   .navbar-container {
@@ -135,6 +130,8 @@ body{
     margin-bottom: 10px;
   }
 }
+
+
 
 /*============ SEARCHBAR ========*/
 
@@ -583,3 +580,4 @@ a{
 a{
   color: white;
 }
+

@@ -6,8 +6,6 @@ import { auth } from '../config/firebase'
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 
-
-
 const Navbar = () => {
   const navigate = useNavigate()
   const {user} = useContext(LoginContext)
