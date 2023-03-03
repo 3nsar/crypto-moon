@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { LoginContext } from '../helper/LoginContext'
 import { useNavigate } from 'react-router'
 import { signOut } from 'firebase/auth'
@@ -11,6 +11,23 @@ const Navbar = () => {
   const {user} = useContext(LoginContext)
   const [showNav, setShowNav] = useState(false);
 
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+   }, []);
+
+   const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+
   const signUserOut = async() =>{
     await signOut(auth)
     navigate('/')
@@ -22,7 +39,7 @@ const Navbar = () => {
 
 
   return (
-  <div className='navbar-container'>
+  <div className={`navbar-container  ${isSticky ? 'sticky' : ''}`}>
     {user && (
       <>
 
