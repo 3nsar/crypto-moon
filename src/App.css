@@ -25,6 +25,7 @@ body{
   border-image: linear-gradient(0.25turn, #304ffe, rgba(255,0,128), rgba(56,2,155,0));
   border-image-slice: 1;
   width:100%;
+  transition: all 0.5s;
 }
 
 .navbar-container ul{
@@ -56,6 +57,10 @@ body{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
   z-index: 100;
   padding: 4px;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(0.25turn, rgba(255,0,128), rgba(255,0,128), rgba(255,0,128));
+  border-image-slice: 1;
+  width:100%;
 }
 
 
