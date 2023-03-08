@@ -137,7 +137,7 @@ const Coin = () => {
                <h3>{info.symbol}</h3>
                <h4>RANK: {info.market_cap_rank}</h4>
              </div>
-              <h1>{info.market_data.current_price.eur.toLocaleString()}€</h1>
+              <h1 className='single-coin-price'>{info.market_data.current_price.eur.toLocaleString()}€</h1>
             </div>
             </div>
         <TableContainer component={Paper} sx={tableContainerSx2}>

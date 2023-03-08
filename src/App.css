@@ -406,6 +406,7 @@ form button{
   
 }
 
+
 .single-coin-info{
   display: flex;
   align-items: center;
@@ -452,13 +453,40 @@ form button{
   border-radius: 20px;
   margin-left: 10px;
   font-weight: 900;
-  
 }
 
 .single-coin-info-content{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 400px){
+  .single-coin-info{
+    width: 320px;
+    border: 2px solid #304ffe;
+  }
+
+  .single-coin-info img{
+    height: 28px;
+  }
+  
+.single-coin-info-title h1{
+  font-size: 16px;
+}
+.single-coin-info h4{
+  padding: 3px 5px;
+  font-size: 8px;
+}
+
+.single-coin-price{
+  font-size: 18px;
+}
+
+.single-coin-info-title h3{
+  font-size: 10px;
+  padding: 3px;
+}
 }
 
 .about-coin-container{
