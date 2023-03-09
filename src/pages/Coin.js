@@ -86,6 +86,9 @@ const Coin = () => {
       marginRight: "auto",
       marginTop: 4,
       borderRadius: 2,
+      '@media (min-width: 400px)' : {
+        width: '50%'
+      }
     }
 
 
