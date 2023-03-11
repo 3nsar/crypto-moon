@@ -636,3 +636,18 @@ a{
   color: white;
 }
 
+@media (max-width: 500px){
+  .news-content img{
+    height: 130px;
+    width: 200px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+  }
+
+  .news-info p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+}
+
