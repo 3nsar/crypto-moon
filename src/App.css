@@ -497,6 +497,8 @@ form button{
   max-width: 1000px;
   margin-bottom: 20px;
   margin-top: 32px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .about-coin-container h1{
   margin-left: 10px;
