@@ -51,7 +51,7 @@ const Chat = () => {
                         onClick={() => setShowPicker(val => !val)}
                       />
                       <input placeholder=" Write here..." value={formValue} onChange={(e)=> setFormValue(e.target.value)}/>
-                      <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white'/></button>
+                      <button onClick={(e)=> sendMessage(e)}><SiRocketdotchat size="35px" color='white' className="rocket-icon"/></button>
                     </div>
                       <div className='picker'>               
                        {showPicker && <Picker

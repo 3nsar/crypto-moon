@@ -27,6 +27,7 @@ ChartJS.register(
 );
 
 
+
 const HistoryChart = () => {
   const { id } = useParams();
   const { response } = useAxios(`coins/${id}/market_chart?vs_currency=usd&days=30`);
@@ -42,7 +43,8 @@ const HistoryChart = () => {
   const coinChartData = response.prices.map(value => ({ x: value[0], y: value[1].toFixed(2) }));
   
   const options = {
-    responsive: true
+    responsive: true,
+    maintainAspectRatio: false,
   }
   const data = {
     labels: coinChartData.map(value => moment(value.x).format('MMM DD')),
@@ -59,7 +61,7 @@ const HistoryChart = () => {
   }
  
   return (
-    <div>
+    <div className="chart-wrapper">
       <Line options={options} data={data} />
     </div>
   )

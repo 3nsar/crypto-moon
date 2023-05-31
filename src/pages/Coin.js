@@ -86,8 +86,14 @@ const Coin = () => {
       marginRight: "auto",
       marginTop: 4,
       borderRadius: 2,
-      '@media (min-width: 370px)' : {
-        width: '60%'
+      '@media (max-width: 540px)' : {
+        maxWidth: 400,
+      },
+      '@media (max-width: 430px)' : {
+        maxWidth: 360,
+      },
+      '@media (max-width: 370px)' : {
+        maxWidth: 300,
       }
     }
 
@@ -217,9 +223,9 @@ const Coin = () => {
               </div>   
               <ToastContainer />            
       </div>
-        <div className='chart-container'>
+        <>
           <HistoryChart />
-        </div>
+        </>
       </div>
     ) 
  }

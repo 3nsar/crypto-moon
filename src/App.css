@@ -86,27 +86,19 @@ body{
 }
 
 .show {
-  display: flex ;
+  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  position: absolute;
-  top: 70px;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1000;
+  background-color: transparent;
 }
-
-.show li{
-  margin-top: 10px;
-  
-}
-
 
 @media (max-width: 670px) {
   .navbar-container.sticky  {
     padding: 1rem;
+  }
+
+  .navbar-container h1{
+    font-size: 20px;
   }
 
   .nav-icon {
@@ -124,24 +116,51 @@ body{
   }
 
   .show {
-    top: 74px;
+    top: 59px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
+  .show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+    width: 100%;
+  }
+  
+  .show li{
+    border-bottom: 1px solid gray;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .show li:hover{
+    background-color: rgba(255,0,128);
+    color: white;
+    
+  }
+
   .navbar-list button{
-    background-color: #304ffe;
+    width: 100%;
     cursor: pointer;
     border: none;
-    padding: 1px 3px 1px 3px;
     border-radius: 0;
     color: white;
     font-weight: 600;
     font-size: 12px;
     border-radius: 10px;
-    margin-bottom: 10px;
+    background-color: transparent;
+  }
+
+  .navbar-container li{
+    margin-right: 0px;
   }
 }
 
@@ -235,6 +254,15 @@ video{
  object-fit: cover;
 }
 
+@media (max-width: 600px){
+  .banner-content{
+    min-height: 15vh;
+  }
+  .banner-content h1{
+    font-size: 22px;
+  }
+}
+
 /*============ LOGIN ==========*/
 .login{
   display: flex;
@@ -248,10 +276,12 @@ video{
 
 .login h1{
   font-size: 40px;
+  text-align: center;
 }
 
 .login p{
   font-size: 25px;
+  margin-top: 10px;
   
 }
 
@@ -289,6 +319,7 @@ video{
   overflow-y: auto;
   border-radius: 10px;
   max-width: 800px;
+  width: 100%;
   height: 300px;
   display: flex;
   background-color: #1C1C1C;
@@ -389,8 +420,61 @@ form button{
 .picker{
   margin-top: 10px;
 }
+@media (max-width: 550px){
+
+  .messages img{
+    width: 30px;
+    height: 30px;
+  }
+
+  .messages p{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  form input{
+      width: 300px;
+      height: 30px;
+  }
+
+  .emoji-icon{
+    height: 20px;
+  }
+
+  form button{
+    height: 30px;
+    padding: 2px 0;
+  }
+
+  .chat-btn-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat-btn-content {
+    margin-bottom: 10px; /* Adjust the margin as per your preference */
+  }
+
+  .chat-btn-content button {
+    height: 30px;
+    padding: 2px 0;
+  }
+
+  .rocket-icon {
+    height: 20px; /* Adjust the size as per your preference */
+  }
+
+
+}
+
+@media (max-width: 380px){
+    form input{
+      width: 220px;
+    }
+}
 
 /*================ SINGLE COIN PAGE==========*/
+
 .single-coin-page{
   display: flex;
   align-items: center;
@@ -461,9 +545,42 @@ form button{
   justify-content: center;
 }
 
-@media (max-width: 500px){
+@media (max-width: 650px){
+  .single-coin-container{
+    max-width: 500px;
+    width: 100%;
+  }
   .single-coin-info{
-    width: 320px;
+    max-width: 420px;
+    border: 2px solid #304ffe;
+  }
+
+  .single-coin-info img{
+    height: 38px;
+  }
+  
+.single-coin-info-title h1{
+  font-size: 20px;
+}
+.single-coin-info h4{
+  padding: 3px 5px;
+  font-size: 10px;
+}
+
+.single-coin-price{
+  font-size: 24px;
+}
+
+.single-coin-info-title h3{
+  font-size: 18px;
+  padding: 3px;
+}
+}
+
+
+@media (max-width: 560px){
+  .single-coin-info{
+    max-width: 320px;
     border: 2px solid #304ffe;
   }
 
@@ -516,9 +633,11 @@ form button{
   color: blue;
 }
 
-@media (max-width: 500px){
+@media (max-width: 560px){
   .about-coin-container{
-    width: 350px;
+    max-width: 360px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 }
 
@@ -547,13 +666,16 @@ a{
   text-decoration: none;
 }
 
-.chart-container{
-  width: 1000px;
+.chart-wrapper {
+  height: 400px;
+  width: 100%;
+  max-width: 1000px;
   margin-bottom: 20px;
+
 }
 
-@media (max-width: 500px){
-  .chart-container{
+@media (max-width: 570px) {
+  .chart-wrapper {
     max-width: 360px;
   }
 }
@@ -594,6 +716,7 @@ a{
 .news-content{
   display: flex;
   max-width: 700px;
+  width: 100%;
   margin-top: 20px;
   border-radius: 20px;
   border: 2px solid rgb(212, 0, 255);
@@ -637,11 +760,35 @@ a{
 a{
   color: white;
 }
+@media (max-width: 750px){
+  .news-content{
+    width: 500px;
+  }
 
-@media (max-width: 500px){
+  .news-info h1{
+    font-size: 20px;
+  }
+
+  .news-info p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  .news-info h1{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 520px){
+
+  .news-content{
+    width: 300px;
+  }
+
   .news-content img{
-    height: 130px;
-    width: 200px;
+    height: 120px;
+    width: 120px;
     border-top-left-radius: 18px;
     border-bottom-left-radius: 18px;
   }
@@ -649,6 +796,11 @@ a{
   .news-info p{
     margin-top: 5px;
     margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  .news-info h1{
+    font-size: 14px;
   }
   
 }

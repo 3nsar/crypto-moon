@@ -174,15 +174,35 @@ const Main = () => {
     
 
     const tableContainerSx = {
-      //width: "max-content",
+      // width: "max-content",
       backgroundColor: "grey.900",
       maxWidth: 1150,
       marginLeft: "auto",
       marginRight: "auto",
       marginTop: 5,
       borderRadius: 2,
-      marginBottom: 4
-    }
+      marginBottom: 4,
+      
+      '@media (max-width: 1200px)' : {
+        maxWidth: 1000,
+      },
+      '@media (max-width: 1000px)' : {
+        maxWidth: 900,
+      },
+      '@media (max-width: 930px)' : {
+        maxWidth: 700,
+      },
+      '@media (max-width: 730px)' : {
+        maxWidth: 600,
+      },
+      '@media (max-width: 640px)' : {
+        maxWidth: 500,
+      },
+      '@media (max-width: 510px)' : {
+        maxWidth: 350,
+      },
+    };
+    
 
   return (
     <>
